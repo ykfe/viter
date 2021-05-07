@@ -1,6 +1,6 @@
 {
   "name": "create-vite-app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "create react app",
   "keywords": [
     "vitejs"
@@ -33,5 +33,6 @@
   },
   "bugs": {
     "url": "https://github.com/ykfe/create-vite-app/issues"
-  }
+  },
+  "gitHead": "788ca664121b492edc5463d30121409a6cac430c"
 }
