@@ -1,0 +1,37 @@
+{
+  "name": "create-vite-app",
+  "version": "0.1.0-alpha.0",
+  "description": "create react app",
+  "keywords": [
+    "vitejs"
+  ],
+  "author": "suanmei <mr_suanmei@163.com>",
+  "homepage": "https://github.com/ykfe/create-vite-app",
+  "license": "MIT",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "browser": "dist/index.umd.js",
+  "directories": {
+    "dist": "dist"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "http://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ykfe/create-vite-app.git"
+  },
+  "scripts": {
+    "prepublishOnly": "node scripts/prepublish.js",
+    "declare-type": "tsc --emitDeclarationOnly",
+    "build": "npm run declare-type & rollup -c",
+    "watch": "watch 'npm run build' ./src"
+  },
+  "bugs": {
+    "url": "https://github.com/ykfe/create-vite-app/issues"
+  }
+}
