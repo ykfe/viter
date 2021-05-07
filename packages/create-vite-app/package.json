@@ -1,5 +1,5 @@
 {
-  "name": "@cva/cli",
+  "name": "vita",
   "version": "0.1.5",
   "description": "create react app",
   "keywords": [
@@ -15,10 +15,6 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "public",
-    "registry": "http://registry.npmjs.org/"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ykfe/create-vite-app.git"
@@ -31,5 +27,6 @@
   },
   "bugs": {
     "url": "https://github.com/ykfe/create-vite-app/issues"
-  }
+  },
+  "gitHead": "6e1fea8d9da5643b59dfde843f16bd7ed31fd31f"
 }
