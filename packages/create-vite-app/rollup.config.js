@@ -11,6 +11,9 @@ export default Object.assign(rollupBaseConfig, {
       file: pkg.module,
       format: 'es',
     },
+    {
+      file: pkg.browser,
+      format: 'umd',
+    },
   ],
-  external: Object.keys(pkg.peerDependencies).concat(/^antd\//),
 });
