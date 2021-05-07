@@ -1,3 +1,3 @@
-const createViteApp = false;
+const createViteApp = true;
 
 export default createViteApp;
