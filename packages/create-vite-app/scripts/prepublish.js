@@ -3,4 +3,4 @@
 const path = require('path');
 const prePublish = require('../../../scripts/prepublish');
 
-prePublish('vita', path.join(__dirname, '../'));
+prePublish('veta', path.join(__dirname, '../'));

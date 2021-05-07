@@ -1,5 +1,5 @@
 {
-  "name": "vita",
+  "name": "veta",
   "version": "0.1.6",
   "description": "create react app",
   "keywords": [
@@ -28,5 +28,5 @@
   "bugs": {
     "url": "https://github.com/ykfe/create-vite-app/issues"
   },
-  "gitHead": "6e1fea8d9da5643b59dfde843f16bd7ed31fd31f"
+  "gitHead": "a3bf7be36ab67675f50da41ee8f11fec45a9c8ec"
 }
