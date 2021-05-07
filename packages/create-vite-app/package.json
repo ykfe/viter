@@ -9,8 +9,6 @@
   "homepage": "https://github.com/ykfe/create-vite-app",
   "license": "MIT",
   "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "browser": "dist/index.umd.js",
   "directories": {
     "dist": "dist"
   },
@@ -30,5 +28,5 @@
   "bugs": {
     "url": "https://github.com/ykfe/create-vite-app/issues"
   },
-  "gitHead": "86a39d8e4c9d7f749e297fd52dbf5e767f7f9675"
+  "gitHead": "88fc38ab9c59fc7c5005d0208f899d4d8b2c4125"
 }
