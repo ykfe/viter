@@ -1,5 +1,5 @@
 {
-  "name": "veta",
+  "name": "icva",
   "version": "0.1.7",
   "description": "create react app",
   "keywords": [
@@ -15,6 +15,10 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "http://registry.npmjs.org/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ykfe/create-vite-app.git"
@@ -28,5 +32,5 @@
   "bugs": {
     "url": "https://github.com/ykfe/create-vite-app/issues"
   },
-  "gitHead": "a3bf7be36ab67675f50da41ee8f11fec45a9c8ec"
+  "gitHead": "d22e1bd3e319712562130995d0dfc6f165dd6f20"
 }
