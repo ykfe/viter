@@ -1,16 +1,10 @@
 {
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "version": "0.1.11",
   "command": {
     "publish": {
-      "ignoreChanges": [
-        "ignored-file",
-        "*.md"
-      ],
-      "message": "chore(release): publish %s",
-      "registry": "https://npm.pkg.github.com"
+      "ignoreChanges": ["ignored-file", "*.md"],
+      "message": "chore: publish %s"
     }
   }
 }
