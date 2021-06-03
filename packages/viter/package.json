@@ -1,0 +1,32 @@
+{
+  "name": "viter",
+  "version": "0.0.1",
+  "description": "I create vitejs app",
+  "keywords": [
+    "vitejs"
+  ],
+  "author": "suanmei <mr_suanmei@163.com>",
+  "homepage": "https://github.com/ykfe/create-vite-app",
+  "license": "MIT",
+  "main": "dist/index.cjs.js",
+  "directories": {
+    "dist": "dist"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ykfe/create-vite-app.git"
+  },
+  "scripts": {
+    "prepublishOnly": "node scripts/prepublish.js",
+    "declare-type": "tsc --emitDeclarationOnly",
+    "build": "npm run declare-type & rollup -c",
+    "watch": "watch 'npm run build' ./src"
+  },
+  "bugs": {
+    "url": "https://github.com/ykfe/create-vite-app/issues"
+  },
+  "gitHead": "70b767d3d88f7df4d22502d44c51ae664910a763"
+}
