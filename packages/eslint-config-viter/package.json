@@ -1,9 +1,9 @@
 {
-  "name": "viter",
+  "name": "@viter/eslint-config",
   "version": "0.2.0",
-  "description": "Serve your app",
+  "description": "Viter's Eslint config",
   "keywords": [
-    "vite",
+    "eslint",
     "viter"
   ],
   "author": "suanmei <mr_suanmei@163.com>",
