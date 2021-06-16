@@ -1,9 +1,9 @@
 {
-  "name": "viter",
+  "name": "@viter/rollup-preset-config",
   "version": "0.2.0",
-  "description": "Serve your app",
+  "description": "rollup config for viter's build",
   "keywords": [
-    "vite",
+    "rollup",
     "viter"
   ],
   "author": "suanmei <mr_suanmei@163.com>",

@@ -1,10 +1,9 @@
 {
-  "name": "viter",
+  "name": "@viter/create-app",
   "version": "0.2.0",
-  "description": "Serve your app",
+  "description": "create viter app",
   "keywords": [
-    "vite",
-    "viter"
+    "vitejs"
   ],
   "author": "suanmei <mr_suanmei@163.com>",
   "homepage": "https://github.com/ykfe/viter",

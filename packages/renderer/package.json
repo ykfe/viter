@@ -1,12 +1,13 @@
 {
-  "name": "icva",
+  "name": "@viter/renderer",
   "version": "0.2.0",
-  "description": "I create vitejs app",
+  "description": "Base support for render",
   "keywords": [
-    "vitejs"
+    "react-router",
+    "render"
   ],
   "author": "suanmei <mr_suanmei@163.com>",
-  "homepage": "https://github.com/ykfe/create-vite-app",
+  "homepage": "https://github.com/ykfe/viter",
   "license": "MIT",
   "main": "dist/index.cjs.js",
   "directories": {
@@ -17,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ykfe/create-vite-app.git"
+    "url": "git+https://github.com/ykfe/viter.git"
   },
   "scripts": {
     "prepublishOnly": "node scripts/prepublish.js",
@@ -26,7 +27,7 @@
     "watch": "watch 'npm run build' ./src"
   },
   "bugs": {
-    "url": "https://github.com/ykfe/create-vite-app/issues"
+    "url": "https://github.com/ykfe/viter/issues"
   },
   "gitHead": "70b767d3d88f7df4d22502d44c51ae664910a763"
 }

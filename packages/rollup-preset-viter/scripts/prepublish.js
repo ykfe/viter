@@ -3,4 +3,4 @@
 const path = require('path');
 const prePublish = require('../../../scripts/prepublish');
 
-prePublish('icva', path.join(__dirname, '../'));
+prePublish('@viter/rollup-preset-config', path.join(__dirname, '../'));
