@@ -2,10 +2,11 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import strip from '@rollup/plugin-strip';
 import json from '@rollup/plugin-json';
+import babel from '@rollup/plugin-babel';
 import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
 
 const input = './src/index.ts';
-const extensions = ['.ts', '.tsx'];
+const extensions = ['.ts'];
 
 export default {
   input,
@@ -13,6 +14,10 @@ export default {
     resolve({ extensions, preferBuiltins: true }),
     commonjs(),
     json(),
+    babel({
+      extensions,
+      exclude: 'node_modules/**',
+    }),
     strip({ debugger: true }),
     sizeSnapshot({ printInfo: false }),
   ],
