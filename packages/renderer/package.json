@@ -16,6 +16,7 @@
   "files": [
     "dist"
   ],
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ykfe/viter.git"
@@ -23,11 +24,32 @@
   "scripts": {
     "prepublishOnly": "node scripts/prepublish.js",
     "declare-type": "tsc --emitDeclarationOnly",
-    "build": "npm run declare-type & rollup -c",
-    "watch": "watch 'npm run build' ./src"
+    "build": "npm run declare-type && rollup -c",
+    "watch": "watch 'npm run build' ./src",
+    "dev": "node ./scripts/test.js"
   },
   "bugs": {
     "url": "https://github.com/ykfe/viter/issues"
+  },
+  "dependencies": {
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router-config": "^5.0.2",
+    "mkdirp": "^1.0.4",
+    "mustache": "^4.2.0",
+    "react-router-config": "5.1.1",
+    "react-router-dom": "^6.0.0-beta.0"
+  },
+  "peerDependencies": {
+    "react": "16.x || 17.x",
+    "react-dom": "16.x || 17.x"
+  },
+  "devDependencies": {
+    "@types/mkdirp": "^1.0.1",
+    "@types/mustache": "^4.1.1",
+    "react": "16.x || 17.x",
+    "react-dom": "16.x || 17.x",
+    "rollup-plugin-typescript2": "^0.30.0"
   },
   "gitHead": "70b767d3d88f7df4d22502d44c51ae664910a763"
 }
