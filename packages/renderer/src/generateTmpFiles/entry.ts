@@ -15,11 +15,12 @@ import { writeTmpFile } from '../utils/index';
 
 export default function generateEntry(options: {}) {
   const indexTpl = readFileSync(resolve(__dirname, './entry.tpl'), 'utf-8');
+  console.log(__dirname);
 
   writeTmpFile({
     path: resolve(__dirname, './entry.tsx'),
     content: Mustache.render(indexTpl, {
-      imports: `import 'global.less'`
+      imports: `import './global.less'`
     })
   });
 }

@@ -1,4 +1,5 @@
 {{ #dynamic }}
+import { dynamic } from '@viter/renderer';
 {{ /dynamic }}
 {{ #imports }}
 import React from 'react';
@@ -12,7 +13,7 @@ import {{ name }} from '{{{ path }}}';
 import LoadingComponent from '{{{ loadingComponent }}}';
 {{ /loadingComponent }}
 import { useRoutes } from 'react-router-dom';
-const config = {};
+const config = {{#config}}{{{ config }}}{{/config}};
 const Routes: React.FC = () => {
   return useRoutes(config);
 };

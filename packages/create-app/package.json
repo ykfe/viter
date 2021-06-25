@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/ykfe/viter/issues"
   },
-  "gitHead": "70b767d3d88f7df4d22502d44c51ae664910a763"
+  "gitHead": "70b767d3d88f7df4d22502d44c51ae664910a763",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }

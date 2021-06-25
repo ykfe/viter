@@ -8,8 +8,6 @@ export default function generateRouter(options: {}) {
 
   writeTmpFile({
     path: resolve(__dirname, './router.tsx'),
-    content: Mustache.render(routerTpl, {
-      imports: `import 'global.less'`
-    })
+    content: Mustache.render(routerTpl, {})
   });
 }
