@@ -1,2 +1,2 @@
-import writeTmpFile from './writeTmpFile';
-export { writeTmpFile };
+export { default as writeTmpFile } from './writeTmpFile';
+export { default as dumpGlobalImports } from './dumpGlobalImports';

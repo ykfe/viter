@@ -1,5 +1,5 @@
 {{ #dynamic }}
-import { dynamic } from '@viter/renderer';
+import { dynamic } from '@viter/runtime';
 {{ /dynamic }}
 {{ #imports }}
 import React from 'react';

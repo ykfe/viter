@@ -1,0 +1,67 @@
+---
+root: true
+
+extends:
+  - airbnb-base
+  - plugin:import/typescript
+  - prettier
+
+plugins:
+  - prettier
+
+env:
+  node: true
+  browser: false
+
+rules:
+  consistent-return: 0
+
+  import/no-extraneous-dependencies:
+    - error
+    - peerDependencies: true
+
+  import/no-unresolved: 0
+
+  no-confusing-arrow: 0
+
+  no-param-reassign: 0
+
+  no-plusplus: 0
+
+  no-shadow: 0
+
+  prettier/prettier: error
+
+overrides:
+  - files:
+      - '*.ts'
+      - '*.tsx'
+
+    parser: '@typescript-eslint/parser'
+
+    plugins:
+      - '@typescript-eslint'
+
+    extends:
+      - 'plugin:@typescript-eslint/eslint-recommended'
+      - 'plugin:@typescript-eslint/recommended'
+
+    rules:
+      '@typescript-eslint/no-explicit-any': 0
+
+      '@typescript-eslint/no-use-before-define':
+        - error
+
+      '@typescript-eslint/no-shadow':
+        - error
+
+      no-use-before-define: 0
+
+      no-param-reassign: 0
+
+      # airbnb 配置导致 tsx 文件引用一直报错
+      import/extensions:
+        - 'error'
+        - 'ignorePackages'
+        - ts: 'never'
+          tsx: 'never'

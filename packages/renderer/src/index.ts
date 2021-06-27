@@ -1,9 +1,15 @@
-import { generateEntry, generateRoutes, generateRouter } from './generateTmpFiles';
-function renderer(config: Record<string, any>) {
-  generateEntry(config);
-  generateRoutes(config);
-  generateRouter(config);
-  return true;
+import { generateEntry, RoutesService, generateRouter } from './generateFiles';
+
+function renderer(config: Record<string, any>): boolean {
+  const { routes, dynamicImport } = config;
+  try {
+    generateEntry();
+    generateRouter();
+    const routeService = new RoutesService({ routes, dynamicImport });
+    routeService.generateRoutesFile();
+    return true;
+  } catch (error) {
+    throw new Error(error);
+  }
 }
-// export { default as dynamic } from './dynamic';
 export default renderer;

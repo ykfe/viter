@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import Mustache from 'mustache';
+import { writeTmpFile } from '../utils/index';
 
 export const autoImportsAheadFiles = ['concent.ts'];
 export const autoImportFiles = [
@@ -11,14 +12,12 @@ export const autoImportFiles = [
   'global.scss',
   'global.sass'
 ];
-import { writeTmpFile } from '../utils/index';
 
-export default function generateEntry(options: {}) {
-  const indexTpl = readFileSync(resolve(__dirname, './entry.tpl'), 'utf-8');
+export default function generateEntry(): void {
+  const indexTpl = readFileSync(resolve(__dirname, './tplFiles/entry.tpl'), 'utf-8');
   console.log(__dirname);
-
   writeTmpFile({
-    path: resolve(__dirname, './entry.tsx'),
+    path: resolve(__dirname, './src/.viter/entry.tsx'),
     content: Mustache.render(indexTpl, {
       imports: `import './global.less'`
     })

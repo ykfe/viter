@@ -1,6 +1,8 @@
-import { resolve, join, dirname, relative } from 'path';
+import { join, relative } from 'path';
 import { existsSync } from 'fs';
-function dumpGlobalImports(path: string, files: string[]) {
+
+function dumpGlobalImports(path: string, files: string[]): string {
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   return `${getGlobalFiles(path, files)
     .map((file) => `import '../${relative(path, file)}';`)
     .join('\n')}`;
