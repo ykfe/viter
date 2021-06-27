@@ -153,7 +153,7 @@ export default class RoutesService {
     const routesTpl = readFileSync(resolve(__dirname, './tplFiles/routes.tpl'), 'utf-8');
     const { result, modulesMap } = this.dumpRoutes();
     writeTmpFile({
-      path: resolve(__dirname, './src/.viter/routes.tsx'),
+      path: resolve(process.cwd(), './src/.viter/routes.tsx'),
       content: Mustache.render(routesTpl, {
         config: result,
         modules: modulesMap,

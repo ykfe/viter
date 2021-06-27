@@ -15,9 +15,9 @@ export const autoImportFiles = [
 
 export default function generateEntry(): void {
   const indexTpl = readFileSync(resolve(__dirname, './tplFiles/entry.tpl'), 'utf-8');
-  console.log(__dirname);
+  console.log(process.cwd(), 'test');
   writeTmpFile({
-    path: resolve(__dirname, './src/.viter/entry.tsx'),
+    path: resolve(process.cwd(), './src/.viter/entry.tsx'),
     content: Mustache.render(indexTpl, {
       imports: `import './global.less'`
     })

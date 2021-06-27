@@ -7,7 +7,7 @@ export default function generateRouter(): void {
   const routerTpl = readFileSync(resolve(__dirname, './tplFiles/router.tpl'), 'utf-8');
 
   writeTmpFile({
-    path: resolve(__dirname, './src/.viter/router.tsx'),
+    path: resolve(process.cwd(), './src/.viter/router.tsx'),
     content: Mustache.render(routerTpl, {})
   });
 }
