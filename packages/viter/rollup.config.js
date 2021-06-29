@@ -1,12 +1,17 @@
+import path from 'path';
 import rollupBaseConfig from '../../rollup.config';
-import pkg from './package.json';
 
 export default Object.assign(rollupBaseConfig, {
-  output: [
-    {
-      file: pkg.main,
-      format: 'cjs',
-      exports: 'auto',
-    },
-  ],
+  input: {
+    index: './src/index.ts',
+    cli: './src/cli.ts',
+  },
+  output: {
+    dir: path.resolve(__dirname, 'dist'),
+    entryFileNames: `[name].js`,
+    chunkFileNames: 'chunks/dep-[hash].js',
+    exports: 'named',
+    format: 'cjs',
+    sourcemap: true,
+  },
 });

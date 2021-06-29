@@ -17,6 +17,7 @@ export default {
     babel({
       extensions,
       exclude: 'node_modules/**',
+      babelHelpers: 'bundled',
     }),
     strip({ debugger: true }),
     sizeSnapshot({ printInfo: false }),

@@ -16,6 +16,8 @@ env:
 rules:
   consistent-return: 0
 
+  import/extensions: 0
+
   import/no-extraneous-dependencies:
     - error
     - peerDependencies: true
