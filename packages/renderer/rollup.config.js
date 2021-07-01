@@ -6,7 +6,7 @@ export default Object.assign(rollupBaseConfig, {
     {
       file: pkg.main,
       format: 'cjs',
-      exports: 'auto',
-    },
-  ],
+      exports: 'auto'
+    }
+  ]
 });

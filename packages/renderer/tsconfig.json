@@ -1,7 +1,9 @@
 {
   "extends": "../../tsconfig",
   "compilerOptions": {
-    "outDir": "dist/types"
+    "jsx": "react",
+    "outDir": "dist/types",
+    "esModuleInterop": true
   },
   "include": ["./src", "./types"]
 }

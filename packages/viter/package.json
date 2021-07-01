@@ -36,9 +36,14 @@
     "url": "https://github.com/ykfe/viter/issues"
   },
   "gitHead": "70b767d3d88f7df4d22502d44c51ae664910a763",
+<<<<<<< HEAD
   "devDependencies": {
     "@types/events": "^3.0.0",
     "cac": "^6.7.3",
     "source-map-support": "^0.5.19"
+=======
+  "dependencies": {
+    "lodash": "^4.17.21"
+>>>>>>> feat/renderer
   }
 }
