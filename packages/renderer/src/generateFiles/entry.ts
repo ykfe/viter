@@ -1,9 +1,7 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
-import Mustache from 'mustache';
-import { writeTmpFile } from '../utils/index';
+import { writeTmpFile, dumpGlobalImports } from '../utils/index';
 
-export const autoImportsAheadFiles = ['concent.ts'];
 export const autoImportFiles = [
   'global.ts',
   'global.tsx',
@@ -12,14 +10,15 @@ export const autoImportFiles = [
   'global.scss',
   'global.sass'
 ];
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const ArtTemplate = require('art-template');
 
 export default function generateEntry(): void {
   const indexTpl = readFileSync(resolve(__dirname, './tplFiles/entry.tpl'), 'utf-8');
-  console.log(process.cwd(), 'test');
   writeTmpFile({
     path: resolve(process.cwd(), './src/.viter/entry.tsx'),
-    content: Mustache.render(indexTpl, {
-      imports: `import './global.less'`
+    content: ArtTemplate.render(indexTpl, {
+      imports: dumpGlobalImports(resolve(process.cwd(), './src'), autoImportFiles)
     })
   });
 }

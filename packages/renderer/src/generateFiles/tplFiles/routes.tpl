@@ -1,19 +1,18 @@
-{{ #dynamic }}
+{{if dynamic}}
 import { dynamic } from '@viter/runtime';
-{{ /dynamic }}
-{{ #imports }}
+{{/if}}
 import React from 'react';
-{{{ imports }}}
-{{ /imports }}
-{{ #modules }}
-import {{ name }} from '{{{ path }}}';
-{{ /modules }}
+{{each modules}}
+import {{$value}} from '{{$index}}';
 
-{{ #loadingComponent }}
-import LoadingComponent from '{{{ loadingComponent }}}';
-{{ /loadingComponent }}
+{{/each}}
+import { Navigate } from 'react-router-dom';
+
+{{if loadingComponent }}
+import LoadingComponent from '{{@ loadingComponent}}';
+{{/if}}
 import { useRoutes } from 'react-router-dom';
-const config = {{#config}}{{{ config }}}{{/config}};
+const config = {{@ config}};
 const Routes: React.FC = () => {
   return useRoutes(config);
 };

@@ -6,10 +6,11 @@
     "react-router",
     "render"
   ],
-  "author": "suanmei <mr_suanmei@163.com>",
+  "author": "jerryYuX <1342985759@qq.com>",
   "homepage": "https://github.com/ykfe/viter",
   "license": "MIT",
   "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
   "directories": {
     "dist": "dist"
   },
@@ -24,8 +25,7 @@
     "prepublishOnly": "node scripts/prepublish.js",
     "declare-type": "tsc --emitDeclarationOnly",
     "build": "npm run declare-type && rollup -c && cp -R ./src/generateFiles/tplFiles ./dist",
-    "watch": "watch 'npm run build' ./src",
-    "dev": "node ./scripts/test.js"
+    "watch": "watch 'npm run build' ./src"
   },
   "bugs": {
     "url": "https://github.com/ykfe/viter/issues"
@@ -33,10 +33,9 @@
   "dependencies": {
     "@types/react": "^16.9.43",
     "@types/react-dom": "^16.9.8",
-    "@types/react-router-config": "^5.0.2",
+    "art-template": "^4.13.2",
     "lodash": "^4.17.21",
     "mkdirp": "^1.0.4",
-    "mustache": "^4.2.0",
     "react-router-dom": "^6.0.0-beta.0"
   },
   "peerDependencies": {
@@ -46,9 +45,9 @@
   "devDependencies": {
     "@types/lodash": "^4.14.170",
     "@types/mkdirp": "^1.0.1",
-    "@types/mustache": "^4.1.1",
     "react": "16.x || 17.x",
-    "react-dom": "16.x || 17.x"
+    "react-dom": "16.x || 17.x",
+    "watch": "^1.0.2"
   },
   "gitHead": "70b767d3d88f7df4d22502d44c51ae664910a763"
 }

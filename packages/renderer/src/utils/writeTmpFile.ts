@@ -4,14 +4,14 @@ import { EOL } from 'os';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 
 function writeFile({ path, content }: { path: string; content: string }) {
-  console.log(dirname(path), 'test');
   mkdirp.sync(dirname(path));
   if (!existsSync(path) || readFileSync(path, 'utf-8') !== content) {
     writeFileSync(path, content, 'utf-8');
   }
 }
-const isTSFile = (path: string): boolean =>
-  typeof path === 'string' && !/\.d\.ts$/.test(path) && /\.(ts|tsx)$/.test(path);
+function isTSFile(path: string): boolean {
+  return typeof path === 'string' && !/\.d\.ts$/.test(path) && /\.(ts|tsx)$/.test(path);
+}
 
 function writeTmpFile({
   path,
