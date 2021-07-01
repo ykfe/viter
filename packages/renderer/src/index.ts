@@ -1,4 +1,4 @@
-import { generateEntry, RoutesService, generateRouter } from './generateFiles';
+import { generateEntry, RoutesService, generateRouter } from './generateInitFiles';
 
 function renderer(config: Record<string, any>): boolean {
   const { routes, dynamicImport } = config;

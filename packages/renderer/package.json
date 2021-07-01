@@ -46,8 +46,7 @@
     "@types/lodash": "^4.14.170",
     "@types/mkdirp": "^1.0.1",
     "react": "16.x || 17.x",
-    "react-dom": "16.x || 17.x",
-    "watch": "^1.0.2"
+    "react-dom": "16.x || 17.x"
   },
   "gitHead": "70b767d3d88f7df4d22502d44c51ae664910a763"
 }

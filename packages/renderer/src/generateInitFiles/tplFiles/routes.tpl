@@ -3,7 +3,7 @@ import { dynamic } from '@viter/runtime';
 {{/if}}
 import React from 'react';
 {{each modules}}
-import {{$value}} from '{{$index}}';
+import {{$value.name}} from '{{$value.path}}';
 
 {{/each}}
 import { Navigate } from 'react-router-dom';
