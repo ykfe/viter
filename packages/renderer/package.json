@@ -24,7 +24,7 @@
   "scripts": {
     "prepublishOnly": "node scripts/prepublish.js",
     "declare-type": "tsc --emitDeclarationOnly",
-    "build": "npm run declare-type && rollup -c && cp -R ./src/generateFiles/tplFiles ./dist",
+    "build": "npm run declare-type && rollup -c && cp -R ./src/generateInitFiles/tplFiles ./dist",
     "watch": "watch 'npm run build' ./src"
   },
   "bugs": {

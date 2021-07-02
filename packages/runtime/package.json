@@ -1,10 +1,7 @@
 {
-  "name": "viter",
+  "name": "@viter/runtime",
   "version": "0.2.0",
   "description": "Serve your app",
-  "bin": {
-    "viter": "bin/viter.js"
-  },
   "keywords": [
     "vite",
     "viter"
@@ -19,9 +16,6 @@
   "files": [
     "dist"
   ],
-  "engines": {
-    "node": ">=12.0.0"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ykfe/viter.git"
@@ -36,9 +30,18 @@
     "url": "https://github.com/ykfe/viter/issues"
   },
   "gitHead": "70b767d3d88f7df4d22502d44c51ae664910a763",
+  "dependencies": {
+    "history": "^5.0.0",
+    "react-router": "^6.0.0-beta.0",
+    "react-router-dom": "^6.0.0-beta.0"
+  },
+  "peerDependencies": {
+    "react": "16.x || 17.x"
+  },
   "devDependencies": {
-    "@types/events": "^3.0.0",
-    "cac": "^6.7.3",
-    "source-map-support": "^0.5.19"
+    "@types/node": "^15.12.5",
+    "@types/react": "^17.0.11",
+    "react": "16.x || 17.x",
+    "react-dom": "16.x || 17.x"
   }
 }
