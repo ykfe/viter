@@ -6,7 +6,7 @@ import babel from '@rollup/plugin-babel';
 import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
 
 const input = './src/index.ts';
-const extensions = ['.ts', 'tsx'];
+const extensions = ['.ts', '.tsx'];
 
 export default {
   input,

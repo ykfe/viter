@@ -22,8 +22,11 @@
   },
   "scripts": {
     "prepublishOnly": "node scripts/prepublish.js",
+    "lint-eslint": "eslint --cache --ext .ts,.tsx ./src",
+    "check-types": "tsc --noEmit",
+    "lint": "npm run lint-eslint & npm run check-types",
     "declare-type": "tsc --emitDeclarationOnly",
-    "build": "npm run declare-type & rollup -c",
+    "build": "rollup -c",
     "watch": "watch 'npm run build' ./src"
   },
   "bugs": {
@@ -35,12 +38,13 @@
     "react-router": "^6.0.0-beta.0",
     "react-router-dom": "^6.0.0-beta.0"
   },
-  "peerDependencies": {
-    "react": "16.x || 17.x"
-  },
   "devDependencies": {
     "@types/node": "^15.12.5",
     "@types/react": "^17.0.11",
+    "react": "16.x || 17.x",
+    "react-dom": "16.x || 17.x"
+  },
+  "peerDependencies": {
     "react": "16.x || 17.x",
     "react-dom": "16.x || 17.x"
   }

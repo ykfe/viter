@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "commonjs",
+    "jsx": "react",
     "allowJs": false,
     "declaration": true,
     "types": [],

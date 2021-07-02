@@ -21,8 +21,11 @@
   },
   "scripts": {
     "prepublishOnly": "node scripts/prepublish.js",
+    "lint-eslint": "eslint --cache --ext .ts,.tsx ./src",
+    "check-types": "tsc --noEmit",
+    "lint": "npm run lint-eslint & npm run check-types",
     "declare-type": "tsc --emitDeclarationOnly",
-    "build": "npm run declare-type & rollup -c",
+    "build": "rollup -c & npm run declare-type",
     "watch": "watch 'npm run build' ./src"
   },
   "bugs": {

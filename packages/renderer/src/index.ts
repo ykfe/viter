@@ -12,4 +12,5 @@ function renderer(config: Record<string, any>): boolean {
     throw new Error(error);
   }
 }
+
 export default renderer;

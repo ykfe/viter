@@ -8,5 +8,6 @@ export default Object.assign(rollupBaseConfig, {
       format: 'cjs',
       exports: 'auto'
     }
-  ]
+  ],
+  external: Object.keys(pkg.peerDependencies)
 });
