@@ -32,6 +32,7 @@ export default class RoutesService {
     this.pagesPath = resolve(process.cwd(), './src/pages');
   }
 
+  // 组件路径解析方法
   componentPathResolve(path: string): string {
     if (path.startsWith('@/')) {
       return path;
@@ -39,6 +40,7 @@ export default class RoutesService {
     return resolve(this.pagesPath, path);
   }
 
+  // 批量解析路由路径
   resolveRoutesPath(routes?: Array<IRoute>): void {
     (routes || this.routes).map((item) => {
       if (item.component) {
@@ -46,7 +48,7 @@ export default class RoutesService {
         if (this.dynamicImport) {
           let loading = '';
           if (this.dynamicImport?.loading) {
-            loading = `, loading: LoadingComponent`;
+            loading = `, loading: <LoadingComponent />`;
           }
           item.component = `dynamic({ loader: () => import('${item.component}')${loading}})`;
         } else {

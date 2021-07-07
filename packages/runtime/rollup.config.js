@@ -5,7 +5,7 @@ export default Object.assign(rollupBaseConfig, {
   output: [
     {
       file: pkg.main,
-      format: 'cjs',
+      format: 'esm',
       exports: 'auto',
     },
   ],
