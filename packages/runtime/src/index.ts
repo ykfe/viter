@@ -11,6 +11,8 @@ export {
   Navigate,
   useNavigate,
   useRoutes,
+  BrowserRouter,
+  Outlet,
 } from 'react-router-dom';
 
 export { default as dynamic } from './dynamic';

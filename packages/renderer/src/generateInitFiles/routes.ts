@@ -2,7 +2,6 @@ import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import _cloneDeep from 'lodash/cloneDeep';
 import { writeFile, generateRandomStr } from '../utils/index';
-
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ArtTemplate = require('art-template');
 

@@ -1,7 +1,8 @@
 {
   "extends": "../../tsconfig",
   "compilerOptions": {
-    "outDir": "dist/types"
+    "outDir": "dist/types",
+    "types": ["node"]
   },
   "include": ["./src", "./types"]
 }

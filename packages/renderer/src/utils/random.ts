@@ -4,6 +4,5 @@ export default function generateRandomStr(length: number): string {
 
   for (let i = 0; i < (length || 10); i++)
     str += possible.charAt(Math.floor(Math.random() * possible.length));
-
   return str;
 }

@@ -5,19 +5,18 @@
   "keywords": [
     "vitejs"
   ],
-  "author": "suanmei <mr_suanmei@163.com>",
+  "author": "jerryYuX <1342985759@qq.com>",
   "homepage": "https://github.com/ykfe/viter",
   "license": "MIT",
-  "main": "dist/index.js",
-  "directories": {
-    "dist": "dist"
-  },
-  "files": [
-    "dist"
-  ],
+  "bin": "index.js",
+  
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ykfe/viter.git"
+    "url": "git+https://github.com/ykfe/viter.git",
+    "directory": "packages/create-app"
+  },
+  "engines": {
+    "node": ">=12.0.0"
   },
   "scripts": {
     "prepublishOnly": "node scripts/prepublish.js",
@@ -25,11 +24,15 @@
     "check-types": "tsc --noEmit",
     "lint": "npm run lint-eslint & npm run check-types",
     "declare-type": "tsc --emitDeclarationOnly",
-    "build": "rollup -c & npm run declare-type",
-    "watch": "watch 'npm run build' ./src"
+    "dev": "node ./index.js"
   },
   "bugs": {
     "url": "https://github.com/ykfe/viter/issues"
   },
-  "gitHead": "70b767d3d88f7df4d22502d44c51ae664910a763"
+  "gitHead": "70b767d3d88f7df4d22502d44c51ae664910a763",
+  "dependencies": {
+    "enquirer": "^2.3.6",
+    "kolorist": "^1.2.9",
+    "minimist": "^1.2.5"
+  }
 }

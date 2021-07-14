@@ -1,6 +1,6 @@
 import { generateEntry, RoutesService, generateRouter } from './generateInitFiles';
 
-function renderer(config: Record<string, any>): boolean {
+export function renderer(config: Record<string, any>): boolean {
   const { routes, dynamicImport } = config;
   try {
     generateEntry();
