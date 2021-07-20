@@ -12,17 +12,20 @@ export interface IRoute {
   title?: string;
   [key: string]: any;
 }
-
+export interface IDynamicImport {
+  loading?: string;
+  [key: string]: any;
+}
 export default class RoutesService {
-  routes: Array<IRoute>;
+  private routes: Array<IRoute>;
 
-  dynamicImport: Record<string, any>;
+  private dynamicImport: IDynamicImport;
 
-  srcPath: string;
+  private srcPath: string;
 
-  pagesPath: string;
+  private pagesPath: string;
 
-  componentImports: Array<{ path: string; name: string }> = [];
+  private componentImports: Array<{ path: string; name: string }> = [];
 
   constructor(props: { routes: Array<IRoute>; dynamicImport: Record<string, any> }) {
     this.routes = props.routes;
@@ -95,7 +98,7 @@ export default class RoutesService {
         modules: this.componentImports,
         dynamic: !!this.dynamicImport,
         loadingComponent: this.dynamicImport
-          ? this.componentPathResolve(this.dynamicImport?.loading)
+          ? this.componentPathResolve(this.dynamicImport?.loading || '@/loading')
           : null
       })
     });

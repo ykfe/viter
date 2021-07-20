@@ -12,5 +12,4 @@ export function renderer(config: Record<string, any>): boolean {
     throw new Error(error);
   }
 }
-
-export default renderer;
+export { IRoute, IDynamicImport } from './generateInitFiles';

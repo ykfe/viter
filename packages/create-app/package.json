@@ -8,8 +8,10 @@
   "author": "jerryYuX <1342985759@qq.com>",
   "homepage": "https://github.com/ykfe/viter",
   "license": "MIT",
-  "bin": "index.js",
-  
+  "bin": {
+    "create-app": "index.js",
+    "cva": "index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ykfe/viter.git",
