@@ -13,6 +13,7 @@
   "homepage": "https://github.com/ykfe/viter",
   "license": "MIT",
   "main": "dist/index.js",
+  "types": "dist/src/index.d.ts",
   "directories": {
     "dist": "dist"
   },
@@ -42,8 +43,11 @@
   "devDependencies": {
     "@types/events": "^3.0.0",
     "@types/react": "^17.0.13",
+    "@viter/renderer": "^0.2.0",
     "cac": "^6.7.3",
+    "chokidar": "^3.5.2",
     "react": "^17.0.2",
-    "source-map-support": "^0.5.19"
+    "source-map-support": "^0.5.19",
+    "vite": "^2.4.3"
   }
 }

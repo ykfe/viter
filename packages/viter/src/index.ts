@@ -1,3 +1,1 @@
-const createViteApp = false;
-
-export default createViteApp;
+export * from './config';

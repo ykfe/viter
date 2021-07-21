@@ -21,8 +21,6 @@ export default class RoutesService {
 
   private dynamicImport: IDynamicImport;
 
-  private srcPath: string;
-
   private pagesPath: string;
 
   private componentImports: Array<{ path: string; name: string }> = [];
@@ -30,7 +28,6 @@ export default class RoutesService {
   constructor(props: { routes: Array<IRoute>; dynamicImport: Record<string, any> }) {
     this.routes = props.routes;
     this.dynamicImport = props.dynamicImport;
-    this.srcPath = resolve(process.cwd(), './src');
     this.pagesPath = resolve(process.cwd(), './src/pages');
   }
 

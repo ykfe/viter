@@ -10,6 +10,7 @@ const extensions = ['.ts', '.tsx'];
 
 export default {
   input,
+  external: [/@babel\/runtime/],
   plugins: [
     resolve({ extensions, preferBuiltins: true }),
     commonjs(),
@@ -17,7 +18,7 @@ export default {
     babel({
       extensions,
       exclude: 'node_modules/**',
-      babelHelpers: 'bundled',
+      babelHelpers: 'runtime',
     }),
     strip({ debugger: true }),
     sizeSnapshot({ printInfo: false }),
