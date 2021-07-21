@@ -12,7 +12,7 @@ export const autoImportFiles = [
 function insertGlobalImports(path: string): string {
   // eslint-disable-next-line @typescript-eslint/no-use-before-define
   return `${getGlobalFiles(path, autoImportFiles)
-    .map((file) => `import '../${relative(path, file)}';`)
+    .map((file) => `import '@/${relative(path, file)}';`)
     .join('\n')}`;
 }
 function getGlobalFiles(path: string, files: string[]) {

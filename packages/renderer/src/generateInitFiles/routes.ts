@@ -92,7 +92,7 @@ export default class RoutesService {
     const result = this.routerConfigToJSON();
 
     writeFile({
-      path: resolve(process.cwd(), './src/.viter/routes.tsx'),
+      path: resolve(process.cwd(), './.viter/routes.tsx'),
       content: ArtTemplate.render(routesTpl, {
         config: result,
         modules: this.componentImports,

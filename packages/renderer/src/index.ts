@@ -12,4 +12,4 @@ export function renderer(config: Record<string, any>): boolean {
     throw new Error(error);
   }
 }
-export { IRoute, IDynamicImport } from './generateInitFiles';
+export type { IRoute, IDynamicImport } from './generateInitFiles';

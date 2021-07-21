@@ -8,7 +8,7 @@ export default function generateRouter(): void {
   const routerTpl = readFileSync(resolve(__dirname, './tplFiles/router.tpl'), 'utf-8');
 
   writeFile({
-    path: resolve(process.cwd(), './src/.viter/router.tsx'),
+    path: resolve(process.cwd(), './.viter/router.tsx'),
     content: ArtTemplate.render(routerTpl, {})
   });
 }
