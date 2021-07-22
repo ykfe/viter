@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
-import _cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash-es';
 import { writeFile, generateRandomStr } from '../utils/index';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ArtTemplate = require('art-template');
@@ -64,7 +64,7 @@ export default class RoutesService {
       }
       if (item.routes) {
         this.resolveRoutesPath(item.routes);
-        item.children = _cloneDeep(item.routes);
+        item.children = cloneDeep(item.routes);
         delete item.routes;
       }
       return item;
