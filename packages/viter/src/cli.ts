@@ -34,6 +34,7 @@ cli
       });
       await server.listen();
     } catch (e) {
+      // TODO: add logger module
       process.exit(1);
     }
   });

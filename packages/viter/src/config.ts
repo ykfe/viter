@@ -10,6 +10,18 @@ import { IRoute, IDynamicImport } from '@viter/renderer';
 import { BuildOptions } from './build';
 import { Overwrite } from './utils';
 
+export interface ConfigEnv {
+  command: 'build' | 'serve';
+  mode: string;
+}
+
+export type UserConfigFn = (env: ConfigEnv) => UserConfig | Promise<UserConfig>;
+export type UserConfigExport = UserConfig | Promise<UserConfig> | UserConfigFn;
+
+export function defineConfig(config: UserConfigExport) {
+  return config;
+}
+
 interface ViterUserConfig {
   /**
    * Base public path when served in development or production.
@@ -20,7 +32,7 @@ interface ViterUserConfig {
    * Base public path when served in development or production.
    * @default '/'
    */
-  routes?: IRoute;
+  routes?: IRoute[];
   /**
    * Base public path when served in development or production.
    * @default '/'
@@ -34,16 +46,12 @@ interface ViterUserConfig {
 
 export type UserConfig = Overwrite<ViteUserConfig, ViterUserConfig>;
 
-export type InlineConfig = Overwrite<ViteInlineConfig, { configFile?: string }>;
+export type InlineConfig = UserConfig & Overwrite<ViteInlineConfig, { configFile?: string }>;
 
-export interface ResolvedConfig {
-  configFile?: string;
-  config: UserConfig;
-}
-
-export function defineConfig(config: UserConfig) {
-  return config;
-}
+export type ResolvedConfig = UserConfig & {
+  configFile: string | undefined;
+  inlineConfig: InlineConfig;
+};
 
 export function lookupConfigFile(configRoot: string = process.cwd(), configFile?: string) {
   let resolvedPath: string | undefined;
@@ -84,6 +92,7 @@ export async function resolveConfig(
 
   const configFile = lookupConfigFile(config.root, config.configFile);
   const configEnv = { mode, command };
+
   const loadResult: {
     path: string;
     config: UserConfig;
@@ -93,29 +102,33 @@ export async function resolveConfig(
     config = mergeConfig(loadResult.config, config);
   }
 
-  return {
+  const resolved: ResolvedConfig = {
+    ...config,
     configFile,
-    config: config || {},
+    inlineConfig,
   };
+
+  return resolved;
 }
 
-export function convertConfig({ configFile, config: userConfig = {} }: ResolvedConfig) {
-  const defaultViteConfig = {
+export function convertConfig(config: ResolvedConfig) {
+  const { configFile } = config;
+  const innerConfig = {
     configFile: false,
     server: {
       watch: {
-        ignored: configFile,
+        ignored: [configFile],
       },
     },
   };
-  const config = mergeConfig(defaultViteConfig, userConfig);
+  const viteConfig = mergeConfig(config, innerConfig);
 
-  delete config.routes;
-  delete config.dynamicImport;
+  delete viteConfig.routes;
+  delete viteConfig.dynamicImport;
 
-  if (config.build && config.build.manifest) {
-    config.build.manifest = true;
+  if (viteConfig.build && viteConfig.build.manifest) {
+    viteConfig.build.manifest = true;
   }
 
-  return config;
+  return viteConfig;
 }
