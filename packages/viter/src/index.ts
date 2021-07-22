@@ -1,2 +1,2 @@
 export * from '@viter/runtime';
-export * from './config';
+export type { UserConfigExport } from './config';

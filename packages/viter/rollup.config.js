@@ -15,6 +15,7 @@ export default Object.assign(rollupBaseConfig, {
     sourcemap: true,
   },
   external: ['vite', '@viter/renderer', 'fsevents', 'anymatch', 'is-binary-path', 'object-assign'],
+  preserveEntrySignatures: false,
   onwarn(warning, warn) {
     // vite use the eval('require') trick to deal with optional deps
     if (warning.message.includes('Use of eval')) {
