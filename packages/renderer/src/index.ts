@@ -16,4 +16,5 @@ export function renderer(config: Record<string, any>): boolean {
     throw new Error(error);
   }
 }
+
 export type { IRoute, IDynamicImport } from './generateInitFiles';
