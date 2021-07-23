@@ -1,7 +1,8 @@
 import { RollupOutput, RollupWatcher } from 'rollup';
 import { build as viteBuild } from 'vite';
 import { BuildOptions as ViteBuildOptions } from 'vite/dist/node/index';
-import { resolveConfig, convertConfig, InlineConfig } from './config';
+import { InlineConfig } from './interface';
+import { resolveConfig, convertConfig } from './config';
 import { Overwrite } from './utils';
 
 export type Manifest =

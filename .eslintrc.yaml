@@ -51,14 +51,12 @@ overrides:
     rules:
       '@typescript-eslint/no-explicit-any': 0
 
-      '@typescript-eslint/no-use-before-define':
-        - error
+      '@typescript-eslint/no-use-before-define': 0
 
       '@typescript-eslint/no-shadow':
         - error
 
-      '@typescript-eslint/ban-ts-comment':
-        ts-ignore: false
+      '@typescript-eslint/ban-ts-comment': 0
 
       no-use-before-define: 0
 

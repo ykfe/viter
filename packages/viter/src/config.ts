@@ -1,59 +1,16 @@
 import fs from 'fs';
 import path from 'path';
-import {
-  UserConfig as ViteUserConfig,
-  InlineConfig as ViteInlineConfig,
-  loadConfigFromFile,
-  mergeConfig,
-} from 'vite';
-import { IRoute, IDynamicImport } from '@viter/renderer';
-import { BuildOptions } from './build';
-import { Overwrite } from './utils';
+import { loadConfigFromFile, mergeConfig, UserConfig as ViteUserConfig } from 'vite';
+import { UserConfigExport, UserConfig, InlineConfig, ResolvedConfig } from './interface';
 
-export interface ConfigEnv {
-  command: 'build' | 'serve';
-  mode: string;
-}
-
-export type UserConfigFn = (env: ConfigEnv) => UserConfig | Promise<UserConfig>;
-export type UserConfigExport = UserConfig | Promise<UserConfig> | UserConfigFn;
-
-export function defineConfig(config: UserConfigExport) {
+export function defineConfig(config: UserConfigExport): UserConfigExport {
   return config;
 }
 
-interface ViterUserConfig {
-  /**
-   * Base public path when served in development or production.
-   * @default '/'
-   */
-  base?: string;
-  /**
-   * Base public path when served in development or production.
-   * @default '/'
-   */
-  routes?: IRoute[];
-  /**
-   * Base public path when served in development or production.
-   * @default '/'
-   */
-  dynamicImport?: IDynamicImport;
-  /**
-   * Build specific options
-   */
-  build?: BuildOptions;
-}
-
-export type UserConfig = Overwrite<ViteUserConfig, ViterUserConfig>;
-
-export type InlineConfig = UserConfig & Overwrite<ViteInlineConfig, { configFile?: string }>;
-
-export type ResolvedConfig = UserConfig & {
-  configFile: string | undefined;
-  inlineConfig: InlineConfig;
-};
-
-export function lookupConfigFile(configRoot: string = process.cwd(), configFile?: string) {
+export function lookupConfigFile(
+  configRoot: string = process.cwd(),
+  configFile?: string
+): string | undefined {
   let resolvedPath: string | undefined;
 
   if (configFile) {
@@ -88,8 +45,8 @@ export async function resolveConfig(
   defaultMode = 'development'
 ): Promise<ResolvedConfig> {
   let config = inlineConfig;
-  let mode = inlineConfig.mode || defaultMode;
 
+  const mode = config.mode || defaultMode;
   const configFile = lookupConfigFile(config.root, config.configFile);
   const configEnv = { mode, command };
 
@@ -111,7 +68,7 @@ export async function resolveConfig(
   return resolved;
 }
 
-export function convertConfig(config: ResolvedConfig) {
+export function convertConfig(config: ResolvedConfig): ViteUserConfig {
   const { configFile } = config;
   const innerConfig = {
     configFile: false,

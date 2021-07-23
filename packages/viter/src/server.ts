@@ -1,30 +1,8 @@
 import chokidar, { FSWatcher } from 'chokidar';
 import { createServer as createViteServer, ViteDevServer } from 'vite';
 import { renderer } from '@viter/renderer';
-import { resolveConfig, convertConfig, InlineConfig, UserConfig, ResolvedConfig } from './config';
-
-export interface ServerOptions {
-  placeholder: string;
-}
-
-export interface ViterDevServer {
-  /**
-   * The resolved viter config object
-   */
-  config: ResolvedConfig;
-  /**
-   * Start the server.
-   */
-  viteServer: ViteDevServer;
-  /**
-   * Start the server.
-   */
-  listen(port?: number, isRestart?: boolean): Promise<ViteDevServer>;
-  /**
-   * Stop the server.
-   */
-  close(): Promise<void>;
-}
+import { resolveConfig, convertConfig } from './config';
+import { InlineConfig, ViterDevServer } from './interface';
 
 export const createServer = async (inlineConfig: InlineConfig): Promise<ViterDevServer> => {
   const config = await resolveConfig(inlineConfig, 'serve', 'development');
@@ -63,7 +41,7 @@ export const createServer = async (inlineConfig: InlineConfig): Promise<ViterDev
   return server;
 };
 
-const restartServer = async (server: ViterDevServer) => {
+export async function restartServer(server: ViterDevServer): Promise<void> {
   let newServer: ViterDevServer | null = null;
 
   try {
@@ -86,4 +64,4 @@ const restartServer = async (server: ViterDevServer) => {
   } else {
     server.viteServer.config.logger.info('server restarted.', { timestamp: true });
   }
-};
+}

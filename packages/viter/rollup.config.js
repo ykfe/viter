@@ -1,5 +1,14 @@
 import path from 'path';
 import rollupBaseConfig from '../../rollup.config';
+import pkg from './package.json';
+
+const external = [
+  'fsevents',
+  'anymatch',
+  'is-binary-path',
+  'object-assign',
+  ...Object.keys(pkg.peerDependencies),
+];
 
 export default Object.assign(rollupBaseConfig, {
   input: {
@@ -14,7 +23,7 @@ export default Object.assign(rollupBaseConfig, {
     format: 'cjs',
     sourcemap: true,
   },
-  external: ['vite', '@viter/renderer', 'fsevents', 'anymatch', 'is-binary-path', 'object-assign'],
+  external,
   onwarn(warning, warn) {
     // vite use the eval('require') trick to deal with optional deps
     if (warning.message.includes('Use of eval')) {
