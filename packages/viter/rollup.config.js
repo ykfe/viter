@@ -15,14 +15,23 @@ export default Object.assign(rollupBaseConfig, {
     index: './src/index.ts',
     cli: './src/cli.ts',
   },
-  output: {
-    dir: path.resolve(__dirname, 'dist'),
-    entryFileNames: `[name].js`,
-    chunkFileNames: 'chunks/dep-[hash].js',
-    exports: 'named',
-    format: 'cjs',
-    sourcemap: true,
-  },
+  output: [
+    {
+      dir: path.resolve(__dirname, 'dist/cjs'),
+      entryFileNames: `[name].js`,
+      chunkFileNames: 'chunks/dep-[hash].js',
+      exports: 'named',
+      format: 'cjs',
+      sourcemap: true,
+    },
+    {
+      dir: path.resolve(__dirname, 'dist/esm'),
+      entryFileNames: `[name].js`,
+      chunkFileNames: 'chunks/dep-[hash].js',
+      format: 'es',
+      sourcemap: true,
+    },
+  ],
   external,
   onwarn(warning, warn) {
     // vite use the eval('require') trick to deal with optional deps
