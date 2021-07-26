@@ -13,7 +13,7 @@
   "homepage": "https://github.com/ykfe/viter",
   "license": "MIT",
   "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "module": "dist/esm/runtime.js",
   "types": "dist/src/index.d.ts",
   "directories": {
     "dist": "dist"
@@ -46,6 +46,7 @@
     "@types/react": "^17.0.13",
     "cac": "^6.7.3",
     "chokidar": "^3.5.2",
+    "lodash": "^4.17.21",
     "react": "^17.0.2",
     "rollup": "^2.53.3",
     "source-map-support": "^0.5.19"
@@ -58,7 +59,6 @@
   "peerDependencies": {
     "@viter/renderer": "^0.2.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "vite": "^2.4.3"
+    "react-dom": "^17.0.2"
   }
 }

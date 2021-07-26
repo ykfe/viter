@@ -77,6 +77,11 @@ export function convertConfig(config: ResolvedConfig): ViteUserConfig {
         ignored: [configFile],
       },
     },
+    resolve: {
+      alias: {
+        '@': path.resolve(process.cwd(), 'src'),
+      },
+    },
   };
   const viteConfig = mergeConfig(config, innerConfig);
 

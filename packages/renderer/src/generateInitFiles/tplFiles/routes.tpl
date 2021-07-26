@@ -1,7 +1,7 @@
 {{if dynamic}}
-import { dynamic } from '@viter/runtime';
+import { dynamic } from 'viter';
 {{/if}}
-import { Navigate, useRoutes } from '@viter/runtime';
+import { Navigate, useRoutes } from 'viter';
 import React from 'react';
 {{each modules}}
 import {{$value.name}} from '{{$value.path}}';

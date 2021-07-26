@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 function Loading() {
-  return <div>Loading</div>;
+  return <div style={{ color: "#fff" }}>Loading</div>;
 }
 
 export default Loading;

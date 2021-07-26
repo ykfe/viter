@@ -10,6 +10,7 @@ export interface IRoute {
   path?: string;
   routes?: IRoute[];
   title?: string;
+  redirect?: string;
   [key: string]: any;
 }
 export interface IDynamicImport {
