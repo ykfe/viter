@@ -1,6 +1,6 @@
 {
   "name": "@viter/renderer",
-  "version": "0.2.0",
+  "version": "1.0.0-alpha.0",
   "description": "Base support for render",
   "keywords": [
     "react-router",
@@ -40,11 +40,11 @@
     "react-router-dom": "^6.0.0-beta.0"
   },
   "devDependencies": {
-    "@types/react": "^16.9.43",
-    "@types/react-dom": "^16.9.8",
     "@types/lodash": "^4.14.170",
     "@types/lodash-es": "^4.17.4",
     "@types/mkdirp": "^1.0.1",
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

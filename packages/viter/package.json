@@ -1,6 +1,6 @@
 {
   "name": "viter",
-  "version": "0.2.0",
+  "version": "1.0.0-alpha.0",
   "description": "Serve your app",
   "bin": {
     "viter": "bin/viter.js"
@@ -52,8 +52,8 @@
     "source-map-support": "^0.5.19"
   },
   "dependencies": {
-    "@viter/renderer": "^0.2.0",
-    "@viter/runtime": "^0.2.0",
+    "@viter/renderer": "^1.0.0-alpha.0",
+    "@viter/runtime": "^1.0.0-alpha.0",
     "vite": "^2.4.3"
   },
   "peerDependencies": {
