@@ -17,6 +17,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ykfe/viter.git"
@@ -53,5 +56,5 @@
     "react": "^16.0.0 || ^17.0.0",
     "react-dom": "^16.0.0 || ^17.0.0"
   },
-  "gitHead": "4d0c1dd81fe085e6a1f9e62e19daac1ce6ddbaee"
+  "gitHead": "43ab907c9f76a4b42ac1387194e00de6ffc53e07"
 }
