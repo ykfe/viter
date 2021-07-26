@@ -1,5 +1,5 @@
 {
-  "name": "@viter/runtime",
+  "name": "@viterjs/runtime",
   "version": "1.0.0-alpha.0.2.0",
   "description": "Serve your app",
   "keywords": [
@@ -33,7 +33,7 @@
   "bugs": {
     "url": "https://github.com/ykfe/viter/issues"
   },
-  "gitHead": "d59555a705c6a7604a37067aa2e4d595bc2fd50e",
+  "gitHead": "4d0c1dd81fe085e6a1f9e62e19daac1ce6ddbaee",
   "dependencies": {
     "@loadable/component": "^5.15.0",
     "history": "^5.0.0",
