@@ -1,13 +1,13 @@
 import path from 'path';
+import { cloneDeep, merge } from 'lodash';
 import rollupBaseConfig from '../../rollup.config';
 import pkg from './package.json';
-import { cloneDeep, merge } from 'lodash';
+
 const external = [
   'fsevents',
   'anymatch',
   'is-binary-path',
   'object-assign',
-  'vite',
   ...Object.keys(pkg.peerDependencies),
 ];
 
@@ -25,7 +25,6 @@ export default [
       format: 'cjs',
       sourcemap: true,
     },
-
     external,
     onwarn(warning, warn) {
       // vite use the eval('require') trick to deal with optional deps
