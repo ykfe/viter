@@ -1,1 +1,1 @@
-export * from '@viter/runtime';
+export * from '@viterjs/runtime';

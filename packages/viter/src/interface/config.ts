@@ -1,5 +1,5 @@
 import { UserConfig as ViteUserConfig, InlineConfig as ViteInlineConfig } from 'vite';
-import { IRoute, IDynamicImport } from '@viter/renderer';
+import { IRoute, IDynamicImport } from '@viterjs/renderer';
 import { Overwrite } from '../utils';
 import { BuildOptions } from './build';
 

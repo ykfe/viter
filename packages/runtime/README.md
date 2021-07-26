@@ -1,2 +1,1 @@
-# `@viter/runtime`
-
+# `@viterjs/runtime`

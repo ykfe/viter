@@ -1,6 +1,6 @@
 import chokidar, { FSWatcher } from 'chokidar';
 import { createServer as createViteServer, ViteDevServer } from 'vite';
-import { renderer } from '@viter/renderer';
+import { renderer } from '@viterjs/renderer';
 import { resolveConfig, convertConfig } from './config';
 import { InlineConfig, ViterDevServer } from './interface';
 

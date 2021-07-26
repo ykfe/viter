@@ -3,4 +3,4 @@
 const path = require('path');
 const prePublish = require('../../../scripts/prepublish');
 
-prePublish('@viter/eslint-config', path.join(__dirname, '../'));
+prePublish('@viterjs/eslint-config', path.join(__dirname, '../'));

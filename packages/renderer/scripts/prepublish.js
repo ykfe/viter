@@ -3,4 +3,4 @@
 const path = require('path');
 const prePublish = require('../../../scripts/prepublish');
 
-prePublish('@viter/renderer', path.join(__dirname, '../'));
+prePublish('@viterjs/renderer', path.join(__dirname, '../'));
