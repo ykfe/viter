@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/runtime.js",
-  "types": "dist/src/index.d.ts",
+  "types": "dist/src/types.d.ts",
   "directories": {
     "dist": "dist"
   },
