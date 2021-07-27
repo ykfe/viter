@@ -40,7 +40,7 @@
   "bugs": {
     "url": "https://github.com/ykfe/viter/issues"
   },
-  "gitHead": "0afdf3822f94b22cb4413f12997df3058f2af9c2",
+  "gitHead": "777dce49b205d831be8e0e89a8963df29416b21a",
   "devDependencies": {
     "@types/events": "^3.0.0",
     "@types/react": "^17.0.13",
