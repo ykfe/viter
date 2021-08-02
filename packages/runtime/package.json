@@ -40,6 +40,7 @@
   "dependencies": {
     "@loadable/component": "^5.15.0",
     "history": "^5.0.0",
+    "querystring": "^0.2.1",
     "react-router": "^6.0.0-beta.0",
     "react-router-dom": "^6.0.0-beta.0"
   },

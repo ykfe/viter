@@ -10,7 +10,12 @@ import {{$value.name}} from '{{$value.path}}';
 
 {{if loadingComponent }}
 import LoadingComponent from '{{@ loadingComponent}}';
+{{else if dynamic}}
+const LoadingComponent = () => {
+  return <div>loading</div>;
+};
 {{/if}}
+
 const config = {{@ config}};
 const Routes: React.FC = () => {
   return useRoutes(config);
