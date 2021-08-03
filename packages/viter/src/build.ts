@@ -21,7 +21,7 @@ export declare type BuildOptions = Overwrite<ViteBuildOptions, ViterBuildOptions
 export async function build(
   inlineConfig: InlineConfig
 ): Promise<RollupOutput | RollupOutput[] | RollupWatcher> {
-  const resolvedConfig = await resolveConfig(inlineConfig, 'serve', 'development');
+  const resolvedConfig = await resolveConfig(inlineConfig, 'build', 'production');
   const viteConfig = convertConfig(resolvedConfig);
 
   return viteBuild(viteConfig);
