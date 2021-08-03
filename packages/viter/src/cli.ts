@@ -1,9 +1,10 @@
 import { cac } from 'cac';
+import chalk from 'chalk';
 import pkg from '../package.json';
 import { BuildOptions } from './build';
 
 const cli = cac('viter');
-
+const { log } = console;
 // global options
 interface GlobalCLIOptions {
   '--'?: string[];
@@ -24,6 +25,7 @@ cli
   .alias('serve')
   .option('-m, --mode <mode>', `[string] set env mode`)
   .action(async (root: string, options: GlobalCLIOptions) => {
+    const VITE_START_TIME = Date.now();
     const { createServer } = await import('./server');
     try {
       const server = await createServer({
@@ -33,6 +35,12 @@ cli
         configFile: options.config,
       });
       await server.listen();
+      log(
+        chalk.blue(
+          // @ts-ignore
+          `\n  ready in ${Date.now() - VITE_START_TIME}ms.\n`
+        )
+      );
     } catch (e) {
       // TODO: add logger module
       process.exit(1);
@@ -47,6 +55,7 @@ cli
   .option('-m, --mode <mode>', `[string] set env mode`)
   .option('-w, --watch', `[boolean] rebuilds when modules have changed on disk`)
   .action(async (root: string, options: BuildOptions & GlobalCLIOptions) => {
+    const VITE_START_TIME = Date.now();
     const { build } = await import('./build');
 
     try {
@@ -56,6 +65,12 @@ cli
         mode: options.mode,
         configFile: options.config,
       });
+      log(
+        chalk.blue(
+          // @ts-ignore
+          `\n  finished in ${Date.now() - VITE_START_TIME}ms.\n`
+        )
+      );
     } catch (e) {
       process.exit(1);
     }
