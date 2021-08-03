@@ -1,6 +1,6 @@
 {
   "name": "@viterjs/runtime",
-  "version": "1.0.0-alpha.0.2.3",
+  "version": "1.0.0-beta.2",
   "description": "Serve your app",
   "keywords": [
     "vite",
