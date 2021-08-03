@@ -13,10 +13,11 @@ export interface IRoute {
   redirect?: string;
   [key: string]: any;
 }
-export interface IDynamicImport {
+export interface IDynamicImportConfig {
   loading?: string;
   [key: string]: any;
 }
+export type IDynamicImport = boolean | IDynamicImportConfig;
 export default class RoutesService {
   private routes: Array<IRoute>;
 
@@ -26,7 +27,7 @@ export default class RoutesService {
 
   private componentImports: Array<{ path: string; name: string }> = [];
 
-  constructor(props: { routes: Array<IRoute>; dynamicImport: Record<string, any> }) {
+  constructor(props: { routes: Array<IRoute>; dynamicImport: IDynamicImport & boolean }) {
     this.routes = props.routes;
     this.dynamicImport = props.dynamicImport;
     this.pagesPath = resolve(process.cwd(), './src/pages');
@@ -47,9 +48,7 @@ export default class RoutesService {
         item.component = this.componentPathResolve(item.component);
         if (this.dynamicImport) {
           let loading = '';
-          if (this.dynamicImport?.loading) {
-            loading = `, loading: <LoadingComponent />`;
-          }
+          loading = `, loading: <LoadingComponent />`;
           item.component = `dynamic({ loader: () => import('${item.component}')${loading}})`;
         } else {
           const componentName = generateRandomStr(6);
@@ -88,6 +87,7 @@ export default class RoutesService {
   public generateRoutesFile(): void {
     const routesTpl = readFileSync(resolve(__dirname, './tplFiles/routes.tpl'), 'utf-8');
     const result = this.routerConfigToJSON();
+    const { loading = false } = <IDynamicImportConfig>this?.dynamicImport;
 
     writeFile({
       path: resolve(process.cwd(), './.viter/routes.tsx'),
@@ -95,9 +95,7 @@ export default class RoutesService {
         config: result,
         modules: this.componentImports,
         dynamic: !!this.dynamicImport,
-        loadingComponent: this.dynamicImport
-          ? this.componentPathResolve(this.dynamicImport?.loading || '@/loading')
-          : null
+        loadingComponent: loading ? this.componentPathResolve(loading) : null
       })
     });
   }
