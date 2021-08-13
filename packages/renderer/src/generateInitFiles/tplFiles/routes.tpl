@@ -12,7 +12,7 @@ import {{$value.name}} from '{{$value.path}}';
 import LoadingComponent from '{{@ loadingComponent}}';
 {{else if dynamic}}
 const LoadingComponent = () => {
-  return <div>loading</div>;
+  return <div style={ {fontSize:'12px',color:'#333'} }>loading</div>;
 };
 {{/if}}
 

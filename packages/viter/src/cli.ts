@@ -43,6 +43,7 @@ cli
       );
     } catch (e) {
       // TODO: add logger module
+      log(chalk.red(e));
       process.exit(1);
     }
   });
@@ -72,6 +73,7 @@ cli
         )
       );
     } catch (e) {
+      log(chalk.red(e));
       process.exit(1);
     }
   });

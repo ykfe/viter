@@ -87,7 +87,7 @@ export default class RoutesService {
   public generateRoutesFile(): void {
     const routesTpl = readFileSync(resolve(__dirname, './tplFiles/routes.tpl'), 'utf-8');
     const result = this.routerConfigToJSON();
-    const { loading = false } = <IDynamicImportConfig>this?.dynamicImport;
+    const { loading = false } = <IDynamicImportConfig>this?.dynamicImport || {};
 
     writeFile({
       path: resolve(process.cwd(), './.viter/routes.tsx'),

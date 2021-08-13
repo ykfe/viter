@@ -9,12 +9,34 @@ const withRouter =
     const location = useLocation();
     const navigate = useNavigate();
     const query = location.search ? qs.parse(location.search.substr(1)) : {};
+
+    const historyPush = (
+      pushProps: { pathname: string; state: Record<string, any> } | string,
+      state?: Record<string, any>
+    ) => {
+      if (!pushProps) {
+        return;
+      }
+      if (typeof pushProps === 'object') {
+        navigate(pushProps?.pathname, { state: pushProps?.state });
+        return;
+      }
+      if (typeof pushProps === 'string') {
+        navigate(pushProps, state);
+      }
+    };
+
     return (
       <WrapComponent
         {...props}
         match={{ params }}
         location={{ ...location, query }}
-        history={{ push: navigate }}
+        history={{
+          push: historyPush,
+          goBack: () => navigate(-1),
+          goForward: () => navigate(1),
+          go: (num: number) => navigate(num),
+        }}
       />
     );
   };
