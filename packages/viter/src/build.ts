@@ -5,6 +5,7 @@ import { renderer } from '@viterjs/renderer';
 import { InlineConfig } from './interface';
 import { resolveConfig, convertConfig } from './config';
 import { Overwrite } from './utils';
+import mountingCorePlugins from './plugins';
 
 export type Manifest =
   | {
@@ -25,6 +26,10 @@ export async function build(
   const resolvedConfig = await resolveConfig(inlineConfig, 'build', 'production');
   const viteConfig = convertConfig(resolvedConfig);
   renderer(resolvedConfig);
-
+  if (Array.isArray(viteConfig.plugins)) {
+    viteConfig.plugins = viteConfig.plugins?.concat(mountingCorePlugins(resolvedConfig));
+  } else {
+    viteConfig.plugins = mountingCorePlugins(resolvedConfig);
+  }
   return viteBuild(viteConfig);
 }

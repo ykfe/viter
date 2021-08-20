@@ -10,6 +10,7 @@ export type Manifest =
 
 export interface ViterBuildOptions {
   manifest?: Manifest;
+  runtimePublicPath?: { preloadBaseMarker?: string };
 }
 
 export declare type BuildOptions = Overwrite<ViteBuildOptions, ViterBuildOptions>;
