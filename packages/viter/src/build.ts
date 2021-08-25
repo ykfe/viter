@@ -25,11 +25,14 @@ export async function build(
 ): Promise<RollupOutput | RollupOutput[] | RollupWatcher> {
   const resolvedConfig = await resolveConfig(inlineConfig, 'build', 'production');
   const viteConfig = convertConfig(resolvedConfig);
+
   renderer(resolvedConfig);
+
   if (Array.isArray(viteConfig.plugins)) {
     viteConfig.plugins = viteConfig.plugins?.concat(mountingCorePlugins(resolvedConfig));
   } else {
     viteConfig.plugins = mountingCorePlugins(resolvedConfig);
   }
+
   return viteBuild(viteConfig);
 }

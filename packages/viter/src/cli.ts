@@ -1,10 +1,12 @@
 import { cac } from 'cac';
 import chalk from 'chalk';
+import { exec } from 'child_process';
 import pkg from '../package.json';
 import { BuildOptions } from './build';
 
 const cli = cac('viter');
 const { log } = console;
+
 // global options
 interface GlobalCLIOptions {
   '--'?: string[];
@@ -35,14 +37,8 @@ cli
         configFile: options.config,
       });
       await server.listen();
-      log(
-        chalk.blue(
-          // @ts-ignore
-          `\n  ready in ${Date.now() - VITE_START_TIME}ms.\n`
-        )
-      );
+      log(chalk.blue(`\n  ready in ${Date.now() - VITE_START_TIME}ms.\n`));
     } catch (e) {
-      // TODO: add logger module
       log(chalk.red(e));
       process.exit(1);
     }
@@ -66,12 +62,7 @@ cli
         mode: options.mode,
         configFile: options.config,
       });
-      log(
-        chalk.blue(
-          // @ts-ignore
-          `\n  finished in ${Date.now() - VITE_START_TIME}ms.\n`
-        )
-      );
+      log(chalk.blue(`\n  finished in ${Date.now() - VITE_START_TIME}ms.\n`));
     } catch (e) {
       log(chalk.red(e));
       process.exit(1);
@@ -79,7 +70,11 @@ cli
   });
 
 cli.command('preview [root]').action(() => {
-  // code
+  exec('vite preview', (err) => {
+    if (err) {
+      log(chalk.red(err));
+    }
+  });
 });
 
 cli.help();
