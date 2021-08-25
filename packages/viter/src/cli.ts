@@ -1,6 +1,7 @@
 import { cac } from 'cac';
 import chalk from 'chalk';
 import { exec } from 'child_process';
+import { ServerOptions } from 'vite';
 import pkg from '../package.json';
 import { BuildOptions } from './build';
 
@@ -10,11 +11,39 @@ const { log } = console;
 // global options
 interface GlobalCLIOptions {
   '--'?: string[];
+  debug?: boolean | string;
+  d?: boolean | string;
+  filter?: string;
+  f?: string;
   config?: string;
   c?: boolean | string;
+  root?: string;
   base?: string;
+  r?: string;
   mode?: string;
   m?: string;
+  clearScreen?: boolean;
+}
+
+/**
+ * removing global flags before passing as command specific sub-configs
+ */
+function cleanOptions(options: GlobalCLIOptions) {
+  const ret = { ...options };
+  delete ret['--'];
+  delete ret.debug;
+  delete ret.d;
+  delete ret.filter;
+  delete ret.f;
+  delete ret.config;
+  delete ret.c;
+  delete ret.root;
+  delete ret.base;
+  delete ret.r;
+  delete ret.mode;
+  delete ret.m;
+  delete ret.clearScreen;
+  return ret;
 }
 
 cli
@@ -26,15 +55,18 @@ cli
   .command('[root]')
   .alias('serve')
   .option('-m, --mode <mode>', `[string] set env mode`)
-  .action(async (root: string, options: GlobalCLIOptions) => {
+  .option('--force', `[boolean] force the optimizer to ignore the cache and re-bundle`)
+  .action(async (root: string, options: ServerOptions & GlobalCLIOptions) => {
     const VITE_START_TIME = Date.now();
     const { createServer } = await import('./server');
+
     try {
       const server = await createServer({
         root,
         base: options.base,
         mode: options.mode,
         configFile: options.config,
+        server: cleanOptions(options) as ServerOptions,
       });
       await server.listen();
       log(chalk.blue(`\n  ready in ${Date.now() - VITE_START_TIME}ms.\n`));
