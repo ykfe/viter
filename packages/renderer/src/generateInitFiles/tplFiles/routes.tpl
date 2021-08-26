@@ -18,6 +18,6 @@ const LoadingComponent = () => {
 
 const config = {{@ config}};
 const Routes: React.FC = () => {
-  return useRoutes(config);
+  return useRoutes(config{{if routerBase}},"{{@ routerBase}}"{{/if}});
 };
 export default Routes;

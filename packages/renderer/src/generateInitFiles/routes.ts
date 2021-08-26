@@ -17,7 +17,13 @@ export interface IDynamicImportConfig {
   loading?: string;
   [key: string]: any;
 }
-export type IDynamicImport = boolean | IDynamicImportConfig;
+export type IDynamicImport = boolean | IDynamicImportConfig | undefined;
+
+export interface RoutesServiceProps {
+  routes: Array<IRoute>;
+  dynamicImport?: IDynamicImport & boolean;
+  routerBase?: string;
+}
 export default class RoutesService {
   private routes: Array<IRoute>;
 
@@ -27,10 +33,13 @@ export default class RoutesService {
 
   private componentImports: Array<{ path: string; name: string }> = [];
 
-  constructor(props: { routes: Array<IRoute>; dynamicImport: IDynamicImport & boolean }) {
+  private routerBase: string | boolean;
+
+  constructor(props: RoutesServiceProps) {
     this.routes = props.routes;
     this.dynamicImport = props.dynamicImport;
     this.pagesPath = resolve(process.cwd(), './src/pages');
+    this.routerBase = props.routerBase || false;
   }
 
   // 组件路径解析方法
@@ -72,9 +81,7 @@ export default class RoutesService {
   }
 
   routerConfigToJSON(): string {
-    this.resolveRoutesPath();
-    const clonedRoutes = this.routes;
-    const result = JSON.stringify(clonedRoutes, null, 2)
+    const result = JSON.stringify(this.routes, null, 2)
       .replace(
         /"component": ("(.+?)")/g,
         (global, m1, m2) => `"element": ${m2.replace(/\^/g, '"')}`
@@ -86,6 +93,7 @@ export default class RoutesService {
 
   public generateRoutesFile(): void {
     const routesTpl = readFileSync(resolve(__dirname, './tplFiles/routes.tpl'), 'utf-8');
+    this.resolveRoutesPath();
     const result = this.routerConfigToJSON();
     const { loading = false } = <IDynamicImportConfig>this?.dynamicImport || {};
 
@@ -95,7 +103,8 @@ export default class RoutesService {
         config: result,
         modules: this.componentImports,
         dynamic: !!this.dynamicImport,
-        loadingComponent: loading ? this.componentPathResolve(loading) : null
+        loadingComponent: loading ? this.componentPathResolve(loading) : null,
+        routerBase: this.routerBase
       })
     });
   }
