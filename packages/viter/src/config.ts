@@ -80,6 +80,7 @@ export function convertConfig(config: ResolvedConfig): ViteUserConfig {
     resolve: {
       alias: {
         '@': path.resolve(process.cwd(), 'src'),
+        '@viter-entry': path.resolve(process.cwd(), '.viter'),
       },
     },
   };

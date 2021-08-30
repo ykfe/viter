@@ -1,0 +1,30 @@
+---
+sidebar_position: 10
+---
+
+# 运行时配置
+
+运行时配置即是指代码在浏览器端运行时，可以修改的配置项。目前 viter 暂只支持用户使用动态加载时，指定 publicPath。
+
+## 配置项
+
+### runtimePublicPath
+
+:::tip 注意
+
+本配置项只有在启动动态加载时生效
+
+:::
+
+preloadBaseMarker 用于指定变量名称，默认为`window.__publicPath__`
+
+```ts
+// viter.config.ts
+import { defineConfig } from 'viter';
+
+export default defineConfig({
+  build: {
+    runtimePublicPath: { preloadBaseMarker: 'window.publicPath' },
+  },
+});
+```

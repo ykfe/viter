@@ -102,7 +102,7 @@ cli
   });
 
 cli.command('preview [root]').action(() => {
-  exec('vite preview', (err) => {
+  exec('npx vite preview', (err) => {
     if (err) {
       log(chalk.red(err));
     }
