@@ -8,6 +8,7 @@ const external = [
   'anymatch',
   'is-binary-path',
   'object-assign',
+  'rollup-plugin-terser',
   ...Object.keys(pkg.peerDependencies),
 ];
 

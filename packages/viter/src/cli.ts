@@ -1,6 +1,6 @@
 import { cac } from 'cac';
 import chalk from 'chalk';
-import { exec } from 'child_process';
+import { spawn } from 'child_process';
 import { ServerOptions } from 'vite';
 import pkg from '../package.json';
 import { BuildOptions } from './build';
@@ -102,11 +102,14 @@ cli
   });
 
 cli.command('preview [root]').action(() => {
-  exec('npx vite preview', (err) => {
-    if (err) {
-      log(chalk.red(err));
-    }
-  });
+  try {
+    spawn('npx vite preview ', {
+      shell: true,
+      stdio: 'inherit',
+    });
+  } catch (error) {
+    log(chalk.red(error));
+  }
 });
 
 cli.help();
