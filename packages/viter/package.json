@@ -1,6 +1,6 @@
 {
   "name": "viter",
-  "version": "1.0.0-beta.8",
+  "version": "1.0.0-beta.9",
   "description": "Serve your app",
   "bin": {
     "viter": "bin/viter.js"
@@ -56,9 +56,9 @@
     "anymatch": "^3.1.2",
     "chalk": "^4.1.2",
     "is-binary-path": "^2.1.0",
+    "rollup-plugin-terser": "^7.0.2",
     "source-map-support": "^0.5.19",
-    "vite": "^2.4.3",
-    "rollup-plugin-terser": "^7.0.2"
+    "vite": "^2.4.3"
   },
   "peerDependencies": {
     "@viterjs/renderer": "^1.0.0-alpha.0.2.0",
