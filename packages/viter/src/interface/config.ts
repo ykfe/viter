@@ -28,6 +28,11 @@ interface ViterUserConfig {
    */
   dynamicImport?: IDynamicImport;
   /**
+   * Base public path when served in development or production.
+   * @default '/'
+   */
+  routerBase?: string;
+  /**
    * Build specific options
    */
   build?: BuildOptions;
