@@ -22,7 +22,7 @@ module.exports = {
       items: [
         {
           type: 'doc',
-          docId: 'intro',
+          docId: 'guide/介绍',
           position: 'right',
           label: '指引',
         },
@@ -42,7 +42,7 @@ module.exports = {
           items: [
             {
               label: 'Tutorial',
-              to: '/docs/intro',
+              to: '/docs/guide/介绍',
             },
           ],
         },
