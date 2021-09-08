@@ -1,6 +1,6 @@
 {
   "name": "viter",
-  "version": "1.0.0-beta.9",
+  "version": "1.0.0",
   "description": "Serve your app",
   "bin": {
     "viter": "bin/viter.js"
@@ -53,7 +53,7 @@
   },
   "dependencies": {
     "@viterjs/renderer": "^1.0.0-beta.7",
-    "@viterjs/runtime": "^1.0.0-beta.3",
+    "@viterjs/runtime": "^1.0.0",
     "anymatch": "^3.1.2",
     "chalk": "^4.1.2",
     "esbuild": "^0.12.25",
@@ -65,10 +65,10 @@
   "peerDependencies": {
     "@viterjs/renderer": "^1.0.0-beta.7",
     "@viterjs/runtime": "^1.0.0-beta.3",
+    "esbuild": "^0.12.25",
+    "mkdirp": "^1.0.4",
     "react": "^16.0.0 || ^17.0.0",
     "react-dom": "^16.0.0 || ^17.0.0",
-    "vite": "^2.4.3",
-    "esbuild": "^0.12.25",
-    "mkdirp": "^1.0.4"
+    "vite": "^2.4.3"
   }
 }
