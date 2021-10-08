@@ -4,7 +4,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Viter',
-  tagline: 'Speed up your development',
+  tagline: '小而美的 Vite 中后台开发框架',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -38,16 +38,16 @@ module.exports = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: '文档',
           items: [
             {
-              label: 'Tutorial',
+              label: '介绍',
               to: '/docs/guide/介绍',
             },
           ],
         },
         {
-          title: 'Community',
+          title: '社区',
           items: [
             {
               label: 'Stack Overflow',
@@ -64,7 +64,7 @@ module.exports = {
           ],
         },
         {
-          title: 'More',
+          title: '更多',
           items: [
             {
               label: 'Blog',
