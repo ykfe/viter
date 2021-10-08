@@ -8,8 +8,8 @@ export function renderer(config: Record<string, any>): boolean {
   }
   try {
     generateEntry();
-    generateRouter();
-    const routeService = new RoutesService({ routes, dynamicImport, routerBase });
+    generateRouter(routerBase);
+    const routeService = new RoutesService({ routes, dynamicImport });
     routeService.generateRoutesFile();
     return true;
   } catch (error) {

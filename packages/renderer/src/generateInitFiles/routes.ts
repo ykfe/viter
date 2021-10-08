@@ -22,7 +22,6 @@ export type IDynamicImport = boolean | IDynamicImportConfig | undefined;
 export interface RoutesServiceProps {
   routes: Array<IRoute>;
   dynamicImport?: IDynamicImport & boolean;
-  routerBase?: string;
 }
 export default class RoutesService {
   private routes: Array<IRoute>;
@@ -33,13 +32,10 @@ export default class RoutesService {
 
   private componentImports: Array<{ path: string; name: string }> = [];
 
-  private routerBase: string | boolean;
-
   constructor(props: RoutesServiceProps) {
     this.routes = props.routes;
     this.dynamicImport = props.dynamicImport;
     this.pagesPath = resolve(process.cwd(), './src/pages');
-    this.routerBase = props.routerBase || false;
   }
 
   // 组件路径解析方法
@@ -103,8 +99,7 @@ export default class RoutesService {
         config: result,
         modules: this.componentImports,
         dynamic: !!this.dynamicImport,
-        loadingComponent: loading ? this.componentPathResolve(loading) : null,
-        routerBase: this.routerBase
+        loadingComponent: loading ? this.componentPathResolve(loading) : null
       })
     });
   }
