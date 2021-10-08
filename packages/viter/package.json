@@ -60,7 +60,7 @@
     "is-binary-path": "^2.1.0",
     "mkdirp": "^1.0.4",
     "source-map-support": "^0.5.19",
-    "vite": "^2.4.3"
+    "vite": "^2.6.5"
   },
   "peerDependencies": {
     "@viterjs/renderer": "^1.0.0-beta.7",
@@ -69,6 +69,6 @@
     "mkdirp": "^1.0.4",
     "react": "^16.0.0 || ^17.0.0",
     "react-dom": "^16.0.0 || ^17.0.0",
-    "vite": "^2.4.3"
+    "vite": "^2.6.5"
   }
 }

@@ -1,7 +1,14 @@
 import { cac } from 'cac';
 import chalk from 'chalk';
 import { spawn } from 'child_process';
-import { ServerOptions } from 'vite';
+import {
+  ServerOptions,
+  preview,
+  resolveConfig,
+  createLogger,
+  printHttpServerUrls,
+  LogLevel,
+} from 'vite';
 import pkg from '../package.json';
 import { BuildOptions } from './build';
 
@@ -14,6 +21,8 @@ interface GlobalCLIOptions {
   debug?: boolean | string;
   d?: boolean | string;
   filter?: string;
+  l?: LogLevel;
+  logLevel?: LogLevel;
   f?: string;
   config?: string;
   c?: boolean | string;
@@ -28,21 +37,25 @@ interface GlobalCLIOptions {
 /**
  * removing global flags before passing as command specific sub-configs
  */
-function cleanOptions(options: GlobalCLIOptions) {
+function cleanOptions<Options extends GlobalCLIOptions>(
+  options: Options
+): Omit<Options, keyof GlobalCLIOptions> {
   const ret = { ...options };
   delete ret['--'];
-  delete ret.debug;
-  delete ret.d;
-  delete ret.filter;
-  delete ret.f;
-  delete ret.config;
   delete ret.c;
+  delete ret.config;
+  delete ret.r;
   delete ret.root;
   delete ret.base;
-  delete ret.r;
-  delete ret.mode;
-  delete ret.m;
+  delete ret.l;
+  delete ret.logLevel;
   delete ret.clearScreen;
+  delete ret.d;
+  delete ret.debug;
+  delete ret.f;
+  delete ret.filter;
+  delete ret.m;
+  delete ret.mode;
   return ret;
 }
 
@@ -69,6 +82,8 @@ cli
         server: cleanOptions(options) as ServerOptions,
       });
       await server.listen();
+      // log url info
+      server.viteServer.printUrls();
       log(chalk.blue(`\n  ready in ${Date.now() - VITE_START_TIME}ms.\n`));
     } catch (e) {
       log(chalk.red(e));
@@ -101,16 +116,53 @@ cli
     }
   });
 
-cli.command('preview [root]').action(() => {
-  try {
-    spawn('npx vite preview ', {
-      shell: true,
-      stdio: 'inherit',
-    });
-  } catch (error) {
-    log(chalk.red(error));
-  }
-});
+cli
+  .command('preview [root]')
+  .option('--host [host]', `[string] specify hostname`)
+  .option('--port <port>', `[number] specify port`)
+  .option('--https', `[boolean] use TLS + HTTP/2`)
+  .option('--open [path]', `[boolean | string] open browser on startup`)
+  .option('--strictPort', `[boolean] exit if specified port is already in use`)
+  .action(
+    async (
+      root: string,
+      options: {
+        host?: string | boolean;
+        port?: number;
+        https?: boolean;
+        open?: boolean | string;
+        strictPort?: boolean;
+        logLevel?: LogLevel;
+      } & GlobalCLIOptions
+    ) => {
+      try {
+        const config = await resolveConfig(
+          {
+            root,
+            base: options.base,
+            configFile: options.config,
+            logLevel: options.logLevel,
+            server: {
+              open: options.open,
+              strictPort: options.strictPort,
+              https: options.https,
+            },
+          },
+          'serve',
+          'production'
+        );
+        const server = await preview(config, cleanOptions(options));
+
+        printHttpServerUrls(server, config);
+      } catch (e) {
+        createLogger(options.logLevel).error(
+          chalk.red(`error when starting preview server:\n${e.stack}`),
+          { error: e }
+        );
+        process.exit(1);
+      }
+    }
+  );
 
 cli.help();
 
