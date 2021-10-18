@@ -1,6 +1,11 @@
-# Viter
-
-小而美的 Vite 中后台开发框架
+<h1 align="center">Viter ⚡</h1>
+<p align="center">小而美的 Vite 中后台开发框架</p>
+<p align="center">
+  <a href="https://npmjs.com/package/viter"><img src="https://img.shields.io/npm/v/viter.svg" alt="npm package"></a>
+  <a href="https://nodejs.org/en/about/releases/"><img src="https://img.shields.io/node/v/vite.svg" alt="node compatibility"></a>
+  
+</p>
+<br/>
 
 ## 快速上手
 
@@ -138,6 +143,16 @@ $ npm run serve
 #### 部署
 
 本地验证完，就可以部署了。你需要把 `dist` 目录部署到服务器上。
+
+### Packages
+
+| Package                                                | Version                                                                                                                     |
+| ------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------- |
+| [viter](packages/viter)                                | ![viter version](https://img.shields.io/npm/v/viter.svg?label=%20)                                                          |
+| [@viterjs/render](packages/renderer)                   | ![plugin-vue version](https://img.shields.io/npm/v/@viterjs/renderer.svg?label=%20)                                         |
+| [@viterjs/runtime](packages/runtime)                   | ![runtime version](https://img.shields.io/npm/v/@viterjs/runtime.svg?label=%20)                                             |
+| [@viterjs/eslint-config](packages/eslint-config-viter) | ![@viterjs/eslint-config version](https://img.shields.io/npm/v/@viterjs/eslint-config.svg?label=%20)                        |
+| [@viterjs/create-app](packages/create-app)             | [![create-vite version](https://img.shields.io/npm/v/@viterjs/create-app.svg?label=%20)](packages/create-vite/CHANGELOG.md) |
 
 ### License
 
