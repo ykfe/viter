@@ -1,211 +1,142 @@
-# Create React App
+# Viter
 
-快速创建 React + Vite 应用, 并且你可以定制你的应用.
+小而美的 Vite 中后台开发框架
 
-## Quick Overview
+## 快速上手
 
-```sh
-npx icva my-app
-cd my-app
-npm start
+### 环境准备
+
+首先得有 [node](https://nodejs.org/en/)，并确保 node 版本是 12 或以上。（mac 下推荐使用 [nvm](https://github.com/creationix/nvm) 来管理 node 版本）
+
+```bash
+$ node -v
+v12.18.3
 ```
 
-If you've previously installed `create-react-app` globally via `npm install -g create-react-app`, we recommend you uninstall the package using `npm uninstall -g create-react-app` or `yarn global remove create-react-app` to ensure that npx always uses the latest version.
+### 搭建第一个 Viter 项目
 
-_([npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) comes with npm 5.2+ and higher, see [instructions for older npm versions](https://gist.github.com/gaearon/4064d3c23a77c74a3614c498a8bb1c5f))_
+使用 NPM:
 
-Then open [http://localhost:3000/](http://localhost:3000/) to see your app.<br>
-When you’re ready to deploy to production, create a minified bundle with `npm run build`.
+```bash
+$ npm init @viterjs/app
 
-<p align='center'>
-<img src='https://cdn.jsdelivr.net/gh/facebook/create-react-app@27b42ac7efa018f2541153ab30d63180f5fa39e0/screencast.svg' width='600' alt='npm start'>
-</p>
+npx: 5 安装成功，用时 4.312 秒
+✔ Project name: · viter-project
+✔ Select a framework: · react-admin-ts
+react-admin-ts
 
-### Get Started Immediately
+Scaffolding project in /Users/jerry/work-project/viter-project...
 
-You **don’t** need to install or configure tools like webpack or Babel.<br>
-They are preconfigured and hidden so that you can focus on the code.
+Done. Now run:
 
-Create a project, and you’re good to go.
-
-## Creating an App
-
-**You’ll need to have Node 10.16.0 or later version on your local development machine** (but it’s not required on the server). We recommend using the latest LTS version. You can use [nvm](https://github.com/creationix/nvm#installation) (macOS/Linux) or [nvm-windows](https://github.com/coreybutler/nvm-windows#node-version-manager-nvm-for-windows) to switch Node versions between different projects.
-
-To create a new app, you may choose one of the following methods:
-
-### npx
-
-```sh
-npx create-react-app my-app
-```
-
-_([npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) is a package runner tool that comes with npm 5.2+ and higher, see [instructions for older npm versions](https://gist.github.com/gaearon/4064d3c23a77c74a3614c498a8bb1c5f))_
-
-### npm
-
-```sh
-npm init react-app my-app
-```
-
-_`npm init <initializer>` is available in npm 6+_
-
-### Yarn
-
-```sh
-yarn create react-app my-app
-```
-
-_[`yarn create <starter-kit-package>`](https://yarnpkg.com/lang/en/docs/cli/create/) is available in Yarn 0.25+_
-
-It will create a directory called `my-app` inside the current folder.<br>
-Inside that directory, it will generate the initial project structure and install the transitive dependencies:
+  cd viter-project
+  npm install
+  npm run dev
 
 ```
-my-app
-├── README.md
-├── node_modules
-├── package.json
-├── .gitignore
-├── public
-│   ├── favicon.ico
-│   ├── index.html
-│   └── manifest.json
-└── src
-    ├── App.css
-    ├── App.js
-    ├── App.test.js
-    ├── index.css
-    ├── index.js
-    ├── logo.svg
-    └── serviceWorker.js
-    └── setupTests.js
+
+### 启动项目
+
+```bash
+$ npm run dev
+
+> viter-project@0.0.1 dev /Users/xxx/github-project/xxx
+> viter
+
+
+  vite v2.5.1 dev server running at:
+
+  > Local: http://localhost:3000/
+  > Network: use `--host` to expose
+
 ```
 
-No configuration or complicated folder structures, only the files you need to build your app.<br>
-Once the installation is done, you can open your project folder:
+在浏览器里打开 [http://localhost:3000/](http://localhost:3000/)，能看到以下界面，
 
-```sh
-cd my-app
+![](https://img.alicdn.com/imgextra/i3/O1CN012D1GUN1Hgwo0kfG4i_!!6000000000788-0-tps-1444-982.jpg)
+
+### 修改配置
+
+通过修改项目中的 `viter.config.ts` 文件，配置项目。模板中的配置如下：
+
+```ts
+import { defineConfig } from 'viter';
+import reactRefresh from '@vitejs/plugin-react-refresh';
+
+export default defineConfig({
+  // 插件配置
+  plugins: [reactRefresh()],
+  // 配置路由
+  routes: [
+    {
+      path: '/',
+      component: '@/layout',
+      routes: [
+        { path: '/', redirect: '/home' },
+        { path: '/home', component: './Home' },
+        { path: '/about', component: './About' },
+        { path: '/404', component: './NotFind' },
+        { path: '/*', redirect: '/404' },
+      ],
+    },
+  ],
+  // 开启动态加载
+  dynamicImport: {
+    loading: '@/loading',
+  },
+});
 ```
 
-Inside the newly created project, you can run some built-in commands:
+### 部署发布
 
-### `npm start` or `yarn start`
+#### 构建
 
-Runs the app in development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+$ npm run build
 
-The page will automatically reload if you make changes to the code.<br>
-You will see the build errors and lint warnings in the console.
+> viter-project@0.0.0 build /Users/jerry/github-project/viter-project
+> viter build
 
-<p align='center'>
-<img src='https://cdn.jsdelivr.net/gh/marionebl/create-react-app@9f6282671c54f0874afd37a72f6689727b562498/screencast-error.svg' width='600' alt='Build errors'>
-</p>
+vite v2.5.6 building for production...
+✓ 44 modules transformed.
+dist/index.html                  0.45 KiB
+dist/assets/index.cb6faa6d.js    0.18 KiB / brotli: 0.12 KiB
+dist/assets/index.0662466a.js    0.77 KiB / brotli: 0.33 KiB
+dist/assets/index.d5836ef7.js    0.12 KiB / brotli: 0.09 KiB
+dist/assets/index.0c87e543.js    0.12 KiB / brotli: 0.09 KiB
+dist/assets/index.a851cde7.js    2.38 KiB / brotli: 0.84 KiB
+dist/assets/index.588c1ae3.css   0.53 KiB / brotli: 0.25 KiB
+dist/assets/vendor.eb369f9e.js   143.59 KiB / brotli: 40.60 KiB
 
-### `npm test` or `yarn test`
+  finished in 3202ms.
+```
 
-Runs the test watcher in an interactive mode.<br>
-By default, runs tests related to files changed since the last commit.
+构建产物默认生成到 `./dist` 下。
 
-[Read more about testing.](https://facebook.github.io/create-react-app/docs/running-tests)
+#### 本地验证
 
-### `npm run build` or `yarn build`
+发布之前，可以通过 `serve` 做本地验证，
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+$ npm run serve
 
-The build is minified and the filenames include the hashes.<br>
+> viter-project@0.0.0 serve /Users/xxx/github-project/viter-project
+> viter preview
 
-Your app is ready to be deployed.
 
-## User Guide
+  vite v2.5.6 build preview server running at:
 
-You can find detailed instructions on using Create React App and many tips in [its documentation](https://facebook.github.io/create-react-app/).
+  > Local: http://localhost:5000/
+  > Network: use `--host` to expose
 
-## How to Update to New Versions?
+```
 
-Please refer to the [User Guide](https://facebook.github.io/create-react-app/docs/updating-to-new-releases) for this and other information.
+访问 [http://localhost:5000](http://localhost:5000)，正常情况下应该是和执行 `npm run dev` 时是一致的。
 
-## Philosophy
+#### 部署
 
-- **One Dependency:** There is only one build dependency. It uses webpack, Babel, ESLint, and other amazing projects, but provides a cohesive curated experience on top of them.
+本地验证完，就可以部署了。你需要把 `dist` 目录部署到服务器上。
 
-- **No Configuration Required:** You don't need to configure anything. A reasonably good configuration of both development and production builds is handled for you so you can focus on writing code.
+### License
 
-- **No Lock-In:** You can “eject” to a custom setup at any time. Run a single command, and all the configuration and build dependencies will be moved directly into your project, so you can pick up right where you left off.
-
-## What’s Included?
-
-Your environment will have everything you need to build a modern single-page React app:
-
-- React, JSX, ES6, TypeScript and Flow syntax support.
-- Language extras beyond ES6 like the object spread operator.
-- Autoprefixed CSS, so you don’t need `-webkit-` or other prefixes.
-- A fast interactive unit test runner with built-in support for coverage reporting.
-- A live development server that warns about common mistakes.
-- A build script to bundle JS, CSS, and images for production, with hashes and sourcemaps.
-- An offline-first [service worker](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers) and a [web app manifest](https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/), meeting all the [Progressive Web App](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app) criteria. (_Note: Using the service worker is opt-in as of `react-scripts@2.0.0` and higher_)
-- Hassle-free updates for the above tools with a single dependency.
-
-Check out [this guide](https://github.com/nitishdayal/cra_closer_look) for an overview of how these tools fit together.
-
-The tradeoff is that **these tools are preconfigured to work in a specific way**. If your project needs more customization, you can ["eject"](https://facebook.github.io/create-react-app/docs/available-scripts#npm-run-eject) and customize it, but then you will need to maintain this configuration.
-
-## Popular Alternatives
-
-Create React App is a great fit for:
-
-- **Learning React** in a comfortable and feature-rich development environment.
-- **Starting new single-page React applications.**
-- **Creating examples** with React for your libraries and components.
-
-Here are a few common cases where you might want to try something else:
-
-- If you want to **try React** without hundreds of transitive build tool dependencies, consider [using a single HTML file or an online sandbox instead](https://reactjs.org/docs/try-react.html).
-
-- If you need to **integrate React code with a server-side template framework** like Rails, Django or Symfony, or if you’re **not building a single-page app**, consider using [nwb](https://github.com/insin/nwb), or [Neutrino](https://neutrino.js.org/) which are more flexible. For Rails specifically, you can use [Rails Webpacker](https://github.com/rails/webpacker). For Symfony, try [Symfony's webpack Encore](https://symfony.com/doc/current/frontend/encore/reactjs.html).
-
-- If you need to **publish a React component**, [nwb](https://github.com/insin/nwb) can [also do this](https://github.com/insin/nwb#react-components-and-libraries), as well as [Neutrino's react-components preset](https://neutrino.js.org/packages/react-components/).
-
-- If you want to do **server rendering** with React and Node.js, check out [Next.js](https://nextjs.org/) or [Razzle](https://github.com/jaredpalmer/razzle). Create React App is agnostic of the backend, and only produces static HTML/JS/CSS bundles.
-
-- If your website is **mostly static** (for example, a portfolio or a blog), consider using [Gatsby](https://www.gatsbyjs.org/) or [Next.js](https://nextjs.org/). Unlike Create React App, Gatsby pre-renders the website into HTML at build time. Next.js supports both server rendering and pre-rendering.
-
-- Finally, if you need **more customization**, check out [Neutrino](https://neutrino.js.org/) and its [React preset](https://neutrino.js.org/packages/react/).
-
-All of the above tools can work with little to no configuration.
-
-If you prefer configuring the build yourself, [follow this guide](https://reactjs.org/docs/add-react-to-an-existing-app.html).
-
-## React Native
-
-Looking for something similar, but for React Native?<br>
-Check out [Expo CLI](https://github.com/expo/expo-cli).
-
-## Contributing
-
-We'd love to have your helping hand on `create-react-app`! See [CONTRIBUTING.md](CONTRIBUTING.md) for more information on what we're looking for and how to get started.
-
-## Supporting Create React App
-
-Create React App is a community maintained project and all contributors are volunteers. If you'd like to support the future development of Create React App then please consider donating to our [Open Collective](https://opencollective.com/create-react-app).
-
-## Credits
-
-This project exists thanks to all the people who [contribute](CONTRIBUTING.md).<br>
-<a href="https://github.com/ykfe/create-vite-app/graphs/contributors"><img src="https://opencollective.com/create-react-app/contributors.svg?width=890&button=false" /></a>
-
-Thanks to [Netlify](https://www.netlify.com/) for hosting our documentation.
-
-## Acknowledgements
-
-We are grateful to the authors of existing related projects for their ideas and collaboration:
-
-- [@eanplatter](https://github.com/eanplatter)
-- [@insin](https://github.com/insin)
-- [@mxstbr](https://github.com/mxstbr)
-
-## License
-
-Create React App is open source software [licensed as MIT](https://github.com/facebook/create-react-app/blob/master/LICENSE). The Create React App logo is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
+[MIT](https://github.com/ykfe/viter/blob/main/LICENSE)
