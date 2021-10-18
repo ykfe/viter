@@ -1,9 +1,9 @@
-import React from "react";
-import { Outlet } from "viter";
+import React from 'react';
+import { Outlet } from 'viter';
 
 function Layout() {
   return (
-    <div style={{ backgroundColor: "GrayText", height: "400px" }}>
+    <div style={{ backgroundColor: '#fff8c4' }}>
       <Outlet></Outlet>
     </div>
   );

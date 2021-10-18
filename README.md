@@ -53,7 +53,7 @@ $ npm run dev
 
 在浏览器里打开 [http://localhost:3000/](http://localhost:3000/)，能看到以下界面，
 
-![](https://img.alicdn.com/imgextra/i3/O1CN012D1GUN1Hgwo0kfG4i_!!6000000000788-0-tps-1444-982.jpg)
+![](https://img.alicdn.com/imgextra/i3/O1CN01rRPHKg29KUe8p3EcB_!!6000000008049-0-tps-1284-680.jpg)
 
 ### 修改配置
 
@@ -86,6 +86,8 @@ export default defineConfig({
   },
 });
 ```
+
+更多配置，请前往 [Viter 文档](https://viterjs.github.io/) 查看。
 
 ### 部署发布
 
