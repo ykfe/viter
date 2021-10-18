@@ -9,6 +9,7 @@ export default defineConfig({
       path: '/',
       component: '@/layout',
       routes: [
+        { path: '/', redirect: '/home' },
         { path: '/home', component: './Home' },
         { path: '/about', component: './About' },
         { path: '/404', component: './NotFind' },

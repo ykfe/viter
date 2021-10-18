@@ -26,7 +26,7 @@ module.exports = {
           position: 'right',
           label: '指引',
         },
-        { to: '/blog', label: '博客', position: 'right' },
+        // { to: '/blog', label: '博客', position: 'right' },
         {
           href: 'https://github.com/ykfe/viter',
           label: 'GitHub',
@@ -50,16 +50,8 @@ module.exports = {
           title: '社区',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              label: 'Issues',
+              href: 'https://github.com/ykfe/viter/issues',
             },
           ],
         },
@@ -67,12 +59,8 @@ module.exports = {
           title: '更多',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/ykfe/viter',
             },
           ],
         },
