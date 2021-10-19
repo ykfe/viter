@@ -1,7 +1,39 @@
 import fs from 'fs';
 import path from 'path';
 import { loadConfigFromFile, mergeConfig, UserConfig as ViteUserConfig } from 'vite';
+import _merge from 'lodash.merge';
 import { UserConfigExport, UserConfig, InlineConfig, ResolvedConfig } from './interface';
+
+const PRE_CONFIG = {
+  single: {
+    cssCodeSplit: false,
+    rollupOptions: {
+      output: {
+        assetFileNames: 'index[extname]',
+        entryFileNames: 'index.esm.js',
+        manualChunks: {},
+      },
+    },
+  },
+  split: {
+    cssCodeSplit: true,
+    rollupOptions: {
+      output: {
+        assetFileNames: 'index.[hash][extname]',
+        entryFileNames: 'index.esm.js',
+      },
+    },
+  },
+  'split-js': {
+    cssCodeSplit: false,
+    rollupOptions: {
+      output: {
+        assetFileNames: 'index[extname]',
+        entryFileNames: 'index.esm.js',
+      },
+    },
+  },
+};
 
 export function defineConfig(config: UserConfigExport): UserConfigExport {
   return config;
@@ -84,6 +116,11 @@ export function convertConfig(config: ResolvedConfig): ViteUserConfig {
       },
     },
   };
+  // 加载预置打包配置
+  if (config?.build?.buildMode) {
+    const buildConfig = PRE_CONFIG[config.build.buildMode];
+    config.build = _merge(config.build, buildConfig);
+  }
   const viteConfig = mergeConfig(config, innerConfig);
 
   delete viteConfig.routes;

@@ -43,6 +43,7 @@
   "gitHead": "777dce49b205d831be8e0e89a8963df29416b21a",
   "devDependencies": {
     "@types/events": "^3.0.0",
+    "@types/lodash.merge": "^4.6.6",
     "@types/mkdirp": "^1.0.2",
     "@types/react": "^17.0.13",
     "cac": "^6.7.3",
@@ -58,6 +59,7 @@
     "chalk": "^4.1.2",
     "esbuild": "^0.12.25",
     "is-binary-path": "^2.1.0",
+    "lodash.merge": "^4.6.2",
     "mkdirp": "^1.0.4",
     "source-map-support": "^0.5.19",
     "vite": "^2.6.5"

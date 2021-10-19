@@ -11,6 +11,7 @@ export type Manifest =
 export interface ViterBuildOptions {
   manifest?: Manifest;
   runtimePublicPath?: { preloadBaseMarker?: string };
+  buildMode?: 'single' | 'split-js' | 'split';
 }
 
 export declare type BuildOptions = Overwrite<ViteBuildOptions, ViterBuildOptions>;
