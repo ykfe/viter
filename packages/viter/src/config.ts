@@ -3,6 +3,7 @@ import path from 'path';
 import { loadConfigFromFile, mergeConfig, UserConfig as ViteUserConfig } from 'vite';
 import _merge from 'lodash.merge';
 import { UserConfigExport, UserConfig, InlineConfig, ResolvedConfig } from './interface';
+import mountingCorePlugins from './plugins';
 
 const PRE_CONFIG = {
   single: {
@@ -121,6 +122,7 @@ export function convertConfig(config: ResolvedConfig): ViteUserConfig {
     const buildConfig = PRE_CONFIG[config.build.buildMode];
     config.build = _merge(config.build, buildConfig);
   }
+
   const viteConfig = mergeConfig(config, innerConfig);
 
   delete viteConfig.routes;
@@ -128,6 +130,12 @@ export function convertConfig(config: ResolvedConfig): ViteUserConfig {
 
   if (viteConfig.build && viteConfig.build.manifest) {
     viteConfig.build.manifest = true;
+  }
+  // 加载内置插件
+  if (Array.isArray(viteConfig.plugins)) {
+    viteConfig.plugins = viteConfig.plugins?.concat(mountingCorePlugins(config));
+  } else {
+    viteConfig.plugins = mountingCorePlugins(config);
   }
 
   return viteConfig;
