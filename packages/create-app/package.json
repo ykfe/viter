@@ -1,6 +1,6 @@
 {
   "name": "@viterjs/create-app",
-  "version": "1.0.3-beta.0",
+  "version": "1.0.4",
   "description": "create viter app",
   "keywords": [
     "vitejs"
