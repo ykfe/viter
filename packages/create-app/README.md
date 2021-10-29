@@ -1,11 +1,9 @@
-# `create-vite-app`
+# `create-viter-app`
 
 > TODO: description
 
 ## Usage
 
 ```js
-const createViteApp = require('icva');
-
-// TODO: DEMONSTRATE API
+npm init @viterjs/app
 ```
