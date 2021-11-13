@@ -1,6 +1,5 @@
 import { cac } from 'cac';
 import chalk from 'chalk';
-import { spawn } from 'child_process';
 import {
   ServerOptions,
   preview,
@@ -97,6 +96,7 @@ cli
   .option('--outDir <dir>', `[string] output directory (default: dist)`)
   .option('--emptyOutDir', `[boolean] force empty outDir when it's outside of root`)
   .option('-m, --mode <mode>', `[string] set env mode`)
+  .option('-e, --esbuild', `[boolean] set esbuild mode`)
   .option('-w, --watch', `[boolean] rebuilds when modules have changed on disk`)
   .action(async (root: string, options: BuildOptions & GlobalCLIOptions) => {
     const VITE_START_TIME = Date.now();

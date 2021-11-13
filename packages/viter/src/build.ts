@@ -15,6 +15,7 @@ export type Manifest =
 
 export interface ViterBuildOptions {
   manifest?: Manifest;
+  esbuild?: boolean;
 }
 
 export declare type BuildOptions = Overwrite<ViteBuildOptions, ViterBuildOptions>;

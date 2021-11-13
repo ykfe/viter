@@ -40,7 +40,7 @@
     "art-template": "^4.13.2",
     "lodash-es": "^4.17.21",
     "mkdirp": "^1.0.4",
-    "react-router-dom": "^6.0.0-beta.0"
+    "react-router-dom": "^6.0.1"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.170",

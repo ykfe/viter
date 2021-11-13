@@ -65,8 +65,8 @@
     "vite": "^2.6.5"
   },
   "peerDependencies": {
-    "@viterjs/renderer": "^1.0.0-beta.7",
-    "@viterjs/runtime": "^1.0.0-beta.3",
+    "@viterjs/renderer": "^1.0.1",
+    "@viterjs/runtime": "^1.0.1",
     "esbuild": "^0.12.25",
     "mkdirp": "^1.0.4",
     "react": "^16.0.0 || ^17.0.0",
