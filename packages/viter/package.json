@@ -43,14 +43,23 @@
   "gitHead": "777dce49b205d831be8e0e89a8963df29416b21a",
   "devDependencies": {
     "@types/events": "^3.0.0",
+    "@types/fs-extra": "^9.0.13",
+    "@types/less": "^3.0.3",
     "@types/lodash.merge": "^4.6.6",
     "@types/mkdirp": "^1.0.2",
     "@types/react": "^17.0.13",
+    "@types/temp": "^0.9.1",
     "cac": "^6.7.3",
     "chokidar": "^3.5.2",
+    "fs-extra": "^10.0.0",
+    "less": "^4.1.2",
     "lodash": "^4.17.21",
-    "react": "^17.0.2",
-    "rollup": "^2.53.3"
+    "postcss": "^8.3.11",
+    "postcss-modules": "^4.2.2",
+    "react": "^16.14.0",
+    "rollup": "^2.53.3",
+    "temp": "^0.9.4",
+    "resolve-file": "^0.3.0"
   },
   "dependencies": {
     "@viterjs/renderer": "^1.0.5",

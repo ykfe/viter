@@ -6,7 +6,7 @@ import temp from 'temp';
 import { OnLoadArgs, OnLoadResult, OnResolveArgs, OnResolveResult, PluginBuild } from 'esbuild';
 
 import './modules'; // keep this import for enabling modules types declaration ex: import styles from 'styles.module.sass'
-import Less from 'less';
+// import Less from 'less';
 import { renderStyle } from './utils';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const resolveFile = require('resolve-file');
@@ -36,8 +36,12 @@ const onStyleResolve = async (args: OnResolveArgs): Promise<OnResolveResult> => 
   const patchedPath = args.path
     .replace(new RegExp(`^${k}\\/`), `${targetPath}/`)
     .replace(new RegExp(`^${k}$`), targetPath);
+  // console.log(args.path, 'args');
+  // console.log(targetPath, 'targetPath');
+  // console.log(patchedPath, 'patchedPath');
 
   let fullPath = resolveFile(patchedPath, {});
+  // console.log(fullPath, 'fullPath');
   if (!fullPath) fullPath = path.resolve(args.resolveDir, patchedPath);
 
   if (namespace === LOAD_STYLE_NAMESPACE) {

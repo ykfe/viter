@@ -21,12 +21,17 @@ export interface ViterBuildOptions {
 export declare type BuildOptions = Overwrite<ViteBuildOptions, ViterBuildOptions>;
 
 export async function build(
-  inlineConfig: InlineConfig
-): Promise<RollupOutput | RollupOutput[] | RollupWatcher> {
+  inlineConfig: InlineConfig,
+  buildMode: 'default' | 'esbuild'
+): Promise<RollupOutput | RollupOutput[] | RollupWatcher | void> {
   const resolvedConfig = await resolveConfig(inlineConfig, 'build', 'production');
   const viteConfig = convertConfig(resolvedConfig);
 
   renderer(resolvedConfig);
-
+  if (buildMode === 'esbuild') {
+    const { start } = await import('./esbuild/build');
+    const outDir = viteConfig?.build?.outDir;
+    return start({ outDir });
+  }
   return viteBuild(viteConfig);
 }

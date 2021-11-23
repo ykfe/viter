@@ -100,15 +100,19 @@ cli
   .option('-w, --watch', `[boolean] rebuilds when modules have changed on disk`)
   .action(async (root: string, options: BuildOptions & GlobalCLIOptions) => {
     const VITE_START_TIME = Date.now();
+
     const { build } = await import('./build');
 
     try {
-      await build({
-        root,
-        base: options.base,
-        mode: options.mode,
-        configFile: options.config,
-      });
+      await build(
+        {
+          root,
+          base: options.base,
+          mode: options.mode,
+          configFile: options.config,
+        },
+        options?.esbuild ? 'esbuild' : 'default'
+      );
       log(chalk.blue(`\n  finished in ${Date.now() - VITE_START_TIME}ms.\n`));
     } catch (e) {
       log(chalk.red(e));

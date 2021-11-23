@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { TextDecoder } from 'util';
 import path from 'path';
 import fs from 'fs';
