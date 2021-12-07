@@ -1,4 +1,8 @@
-<h1 align="center">Viter ⚡</h1>
+<p align="center">
+  <a href="https://viterjs.github.io/" target="_blank" rel="noopener noreferrer">
+    <img width="180" src="https://img.alicdn.com/imgextra/i4/O1CN01Y566rd1lxNVUjXnfJ_!!6000000004885-0-tps-754-600.jpg" alt="Viter logo">
+  </a>
+</p>
 <p align="center">小而美的 Vite 中后台开发框架</p>
 <p align="center">
   <a href="https://npmjs.com/package/viter"><img src="https://img.shields.io/npm/v/viter.svg" alt="npm package"></a>
@@ -58,7 +62,7 @@ $ npm run dev
 
 在浏览器里打开 [http://localhost:3000/](http://localhost:3000/)，能看到以下界面，
 
-![](https://img.alicdn.com/imgextra/i3/O1CN01rRPHKg29KUe8p3EcB_!!6000000008049-0-tps-1284-680.jpg)
+![](https://img.alicdn.com/imgextra/i3/O1CN014yo0KO1WG7rjR5gMJ_!!6000000002760-0-tps-1444-982.jpg)
 
 ### 修改配置
 
