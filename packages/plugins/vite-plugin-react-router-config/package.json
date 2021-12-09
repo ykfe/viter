@@ -1,0 +1,45 @@
+{
+  "name": "@viterjs/vite-plugin-react-router-config",
+  "version": "1.0.0",
+  "description": "vite plugin for react router",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@loadable/component": "^5.15.0",
+    "art-template": "^4.13.2",
+    "lodash.clonedeep": "^4.5.0",
+    "mkdirp": "^1.0.4",
+    "react-router-dom": "^6.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/loadable__component": "^5.13.4",
+    "@types/lodash.clonedeep": "^4.5.6",
+    "@types/mkdirp": "^1.0.1",
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tsup": "^5.7.2",
+    "typescript": "^4.5.2",
+    "vite": "^2.6.14"
+  },
+  "peerDependencies": {
+    "object-assign": "^4.1.1",
+    "react": "^16.0.0 || ^17.0.0",
+    "react-dom": "^16.0.0 || ^17.0.0"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --dts && cp -R ./src/lib/generateInitFiles/tplFiles ./dist",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "vite",
+    "react",
+    "react-router"
+  ],
+  "author": "jerryYuX",
+  "license": "MIT"
+}
