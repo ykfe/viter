@@ -17,6 +17,6 @@
     "@vitejs/plugin-react": "^1.0.0",
     "@viterjs/vite-plugin-react-router-config": "^1.0.0",
     "typescript": "^4.3.2",
-    "vite": "^2.6.4"
+    "vite": "2.6.14"
   }
 }
