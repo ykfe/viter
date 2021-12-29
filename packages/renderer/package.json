@@ -1,6 +1,6 @@
 {
   "name": "@viterjs/renderer",
-  "version": "1.0.6",
+  "version": "1.0.8-beta.0",
   "description": "Base support for render",
   "keywords": [
     "react-router",
