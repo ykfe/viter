@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import reactRouter from '@viterjs/vite-plugin-react-router-config';
+import reactRouter from '../dist/index';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -14,9 +14,12 @@ export default defineConfig({
       ],
       dynamicImport: true,
       entryPath: './temp',
+      autoInjectScript: true,
     }),
   ],
   server: {
     open: '/home',
+    port: 6001,
+    force: true,
   },
 });

@@ -1,6 +1,6 @@
 {
   "name": "@viterjs/vite-plugin-react-router-config",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "vite plugin for react router",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
