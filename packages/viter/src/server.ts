@@ -53,10 +53,8 @@ export async function restartServer(server: ViterDevServer): Promise<void> {
   await server.close();
 
   (Object.keys(newServer) as Array<keyof ViteDevServer>).forEach((key) => {
-    if (key !== 'app') {
-      // @ts-ignore
-      server[key] = newServer[key];
-    }
+    // @ts-ignore
+    server[key] = newServer[key];
   });
 
   if (!server.viteServer.config.server.middlewareMode) {

@@ -1,13 +1,6 @@
 import { cac } from 'cac';
 import chalk from 'chalk';
-import {
-  ServerOptions,
-  preview,
-  resolveConfig,
-  createLogger,
-  printHttpServerUrls,
-  LogLevel,
-} from 'vite';
+import { ServerOptions, preview, resolveConfig, createLogger, LogLevel } from 'vite';
 import pkg from '../package.json';
 import { BuildOptions } from './build';
 
@@ -151,12 +144,11 @@ cli
           'serve',
           'production'
         );
-        const server = await preview(config, cleanOptions(options));
-
-        printHttpServerUrls(server, config);
-      } catch (e) {
+        const server = await preview(config.inlineConfig);
+        server.printUrls();
+      } catch (e: any) {
         createLogger(options.logLevel).error(
-          chalk.red(`error when starting preview server:\n${e.stack}`),
+          chalk.red(`error when starting preview server:\n${e?.stack}`),
           { error: e }
         );
         process.exit(1);

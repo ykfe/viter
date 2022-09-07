@@ -3,7 +3,7 @@ import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import qs from 'querystring';
 
 const withRouter =
-  <P extends unknown>(WrapComponent: React.ComponentType<P>) =>
+  <P extends Record<string, unknown>>(WrapComponent: React.ComponentType<P>) =>
   (props: P): JSX.Element => {
     const params = useParams();
     const location = useLocation();

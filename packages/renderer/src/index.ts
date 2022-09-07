@@ -12,7 +12,7 @@ export function renderer(config: Record<string, any>): boolean {
     const routeService = new RoutesService({ routes, dynamicImport });
     routeService.generateRoutesFile();
     return true;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(error);
   }
 }
