@@ -1,6 +1,6 @@
 {
   "name": "@viterjs/eslint-config",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0-beta.4",
   "description": "Viter's Eslint config",
   "keywords": [
     "eslint",
