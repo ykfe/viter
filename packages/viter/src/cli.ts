@@ -3,6 +3,7 @@ import chalk from 'chalk';
 import { ServerOptions, preview, resolveConfig, createLogger, LogLevel } from 'vite';
 import pkg from '../package.json';
 import { BuildOptions } from './build';
+import { lookupConfigFile } from './config';
 
 const cli = cac('viter');
 const { log } = console;
@@ -129,22 +130,20 @@ cli
       } & GlobalCLIOptions
     ) => {
       try {
-        const config = await resolveConfig(
-          {
-            root,
-            base: options.base,
-            configFile: options.config,
-            logLevel: options.logLevel,
-            server: {
-              open: options.open,
-              strictPort: options.strictPort,
-              https: options.https,
-            },
+        const server = await preview({
+          root,
+          base: options.base,
+          configFile: options.config || lookupConfigFile(root, options.config),
+          logLevel: options.logLevel,
+          mode: options.mode,
+          preview: {
+            port: options.port,
+            strictPort: options.strictPort,
+            host: options.host,
+            https: options.https,
+            open: options.open,
           },
-          'serve',
-          'production'
-        );
-        const server = await preview(config.inlineConfig);
+        });
         server.printUrls();
       } catch (e: any) {
         createLogger(options.logLevel).error(
