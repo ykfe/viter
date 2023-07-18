@@ -1,6 +1,6 @@
 {
   "name": "viter",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Serve your app",
   "bin": {
     "viter": "bin/viter.js"
@@ -53,8 +53,8 @@
     "rollup": "^3.25.2"
   },
   "dependencies": {
-    "@viterjs/renderer": "^3.0.1",
-    "@viterjs/runtime": "^3.0.1",
+    "@viterjs/renderer": "^3.0.2",
+    "@viterjs/runtime": "^3.0.2",
     "anymatch": "^3.1.2",
     "chalk": "^4.1.2",
     "esbuild": "^0.12.25",
